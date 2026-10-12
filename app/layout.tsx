@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors">
+      <body className="min-h-full flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <JsonLd data={websiteJsonLd} />
         <MotionProvider>
