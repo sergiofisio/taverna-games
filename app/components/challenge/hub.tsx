@@ -23,7 +23,7 @@ function ModeCard({ mode, badge, delay }: { mode: ChallengeMode; badge: string |
     const { t } = useLanguage()
     const meta = MODE_META[mode]
     return (
-        <motion.li initial={{ opacity: 0, y: 24, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1, transition: { delay } }}>
+        <motion.li initial={{ y: 24, scale: 0.95 }} animate={{ y: 0, scale: 1, transition: { delay } }}>
             <Link href={`/desafios/${mode}`} className="block rounded-3xl focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-red-600">
                 <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
@@ -113,8 +113,8 @@ export default function ChallengeHub({ children }: { children?: React.ReactNode 
         <ChallengeBackdrop generation={1}>
             <div className="mx-auto w-full max-w-4xl px-4 py-10">
                 <motion.div
-                    initial={{ opacity: 0, y: -16 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ y: -16 }}
+                    animate={{ y: 0 }}
                     className="rounded-3xl bg-white/85 p-6 text-center shadow-xl backdrop-blur-sm dark:bg-zinc-900/85"
                 >
                     <h2 className="text-4xl font-black tracking-tight">{t('challengesTitle')}</h2>

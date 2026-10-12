@@ -110,8 +110,8 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
             <Link href="/pokemon" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">← {L.back}</Link>
 
             <motion.header
-                initial={{ opacity: 0, y: -12 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: -12 }}
+                animate={{ y: 0 }}
                 className={`relative grid items-center gap-6 overflow-hidden rounded-3xl p-6 shadow-xl sm:grid-cols-[14rem_1fr] ${main.image}`}
             >
                 <Image

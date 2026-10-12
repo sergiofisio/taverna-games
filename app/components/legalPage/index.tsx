@@ -11,7 +11,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
 
     return (
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-10">
-            <motion.header initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}>
+            <motion.header initial={{ y: -12 }} animate={{ y: 0 }}>
                 <h2 className="text-4xl font-black tracking-tight">{t(doc === 'privacy' ? 'privacyTitle' : 'termsTitle')}</h2>
                 <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t('legalUpdated', { date: updated })}</p>
             </motion.header>

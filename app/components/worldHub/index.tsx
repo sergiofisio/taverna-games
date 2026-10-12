@@ -53,7 +53,7 @@ export default function WorldHub({ children }: { children?: React.ReactNode }) {
         <div className="relative isolate flex w-full flex-1 flex-col overflow-hidden bg-zinc-950 text-white">
             <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(239,68,68,0.35),transparent_45%),radial-gradient(circle_at_85%_80%,rgba(217,119,6,0.35),transparent_45%)]" />
             <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-4 py-12">
-                <motion.header initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="text-center">
+                <motion.header initial={{ y: -16 }} animate={{ y: 0 }} className="text-center">
                     <p className="text-sm font-black tracking-[0.3em] text-amber-300 uppercase">{SITE_NAME}</p>
                     <h2 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">{t('hubTitle')}</h2>
                     <p className="mx-auto mt-3 max-w-2xl text-zinc-300">{t('hubSubtitle')}</p>
@@ -63,8 +63,8 @@ export default function WorldHub({ children }: { children?: React.ReactNode }) {
                     {PORTALS.map((portal, index) => (
                         <motion.li
                             key={portal.href}
-                            initial={{ opacity: 0, x: portal.from }}
-                            animate={{ opacity: 1, x: 0, transition: { delay: 0.1 + index * 0.1 } }}
+                            initial={{ x: portal.from }}
+                            animate={{ x: 0, transition: { delay: 0.1 + index * 0.1 } }}
                         >
                             <Link href={portal.href} className="block rounded-3xl focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-amber-300">
                                 <motion.div

@@ -37,8 +37,8 @@ export default function HsHome({ children }: { children?: React.ReactNode }) {
     return (
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10">
             <motion.header
-                initial={{ opacity: 0, y: -16 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: -16 }}
+                animate={{ y: 0 }}
                 className="flex flex-col items-center gap-4 text-center"
             >
                 <motion.span
@@ -59,7 +59,7 @@ export default function HsHome({ children }: { children?: React.ReactNode }) {
 
             <ul className="grid gap-5 md:grid-cols-3">
                 {SECTIONS.map((section, index) => (
-                    <motion.li key={section.href} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 + index * 0.08 } }}>
+                    <motion.li key={section.href} initial={{ y: 24 }} animate={{ y: 0, transition: { delay: 0.1 + index * 0.08 } }}>
                         <Link href={section.href} className="block h-full rounded-3xl focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-amber-400">
                             <motion.div
                                 whileHover={{ y: -6, scale: 1.02 }}
