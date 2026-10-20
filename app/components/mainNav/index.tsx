@@ -77,7 +77,7 @@ export default function MainNav() {
           </ul>
         )}
       </div>
-      <div className="flex max-w-[34vw] overflow-x-auto [scrollbar-width:none] max-sm:hidden">
+      <div className="flex max-w-[34vw] overflow-x-auto scrollbar-none max-sm:hidden">
         {LINKS.map(({ href, label }) => {
           const active = isActive(pathname, href)
           return (
