@@ -12,6 +12,8 @@ import type { ChallengeStatus } from "../../hooks/useChallenge";
 import { getLevelInfo, readLocalStatsMap, totalXp, type Reward } from "../../lib/progression";
 import { BadgeIcon, XpBar, badgeDescription, badgeTitle } from "../progression";
 import { CARD, useSpeciesName } from "./shared";
+import { attemptSquares, challengeNumber, shareText } from "../../lib/share";
+import { SITE_URL } from "../../lib/site";
 
 export interface ChallengeAnswer {
     ids: number[];
@@ -116,6 +118,7 @@ export default function ResultPanel({ mode, status, answer, attempts, stats, rew
             )}
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <ShareResult mode={mode} won={won} attempts={attempts} streak={stats.streak} variant={variant} />
                 {answer.ids.map((id) => (
                     <motion.button
                         key={id}
@@ -161,6 +164,38 @@ export default function ResultPanel({ mode, status, answer, attempts, stats, rew
                 </Link>
             </motion.div>
         </motion.section>
+    )
+}
+
+function ShareResult({ mode, won, attempts, streak, variant }: { mode: ChallengeMode; won: boolean; attempts: number; streak: number; variant: ChallengeVariant }) {
+    const { t } = useLanguage()
+    const [copied, setCopied] = useState(false)
+
+    const share = async () => {
+        const title = t(MODE_META[mode].title)
+        const lines = [
+            variant === 'daily' ? t('shareDaily', { mode: title, n: challengeNumber(getDateKey()) }) : t('shareRandom', { mode: title }),
+            attemptSquares(won, attempts),
+            !won ? t('shareGaveUp') : attempts === 1 ? t('shareWonFirst') : t('shareWon', { n: attempts }),
+            ...(won && streak > 1 ? [t('shareStreak', { n: streak })] : []),
+            t('shareInvite'),
+        ]
+        if (await shareText(lines.join('\n'), `${SITE_URL}/desafios/${mode}`) === 'copied') {
+            setCopied(true)
+            setTimeout(() => setCopied(false), 2000)
+        }
+    }
+
+    return (
+        <motion.button
+            type="button"
+            onClick={share}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-xl bg-green-600 px-4 py-2 font-bold text-white"
+        >
+            {copied ? `✓ ${t('shareCopied')}` : `📤 ${t('shareResult')}`}
+        </motion.button>
     )
 }
 

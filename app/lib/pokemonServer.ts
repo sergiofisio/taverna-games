@@ -1,5 +1,5 @@
 import type { ChainLink, PokemonData, SpeciesDetail } from "./pokeapi";
-import { getGenerationOfId, getSpeciesId } from "./pokeapi";
+import { POKEMON_TYPES, getGenerationOfId, getSpeciesId } from "./pokeapi";
 
 const API_URL = process.env.NEXT_PUBLIC_POKEMON_API_URL ?? 'https://pokeapi.co/api/v2/'
 export const POKEMON_REVALIDATE = 60 * 60 * 24 * 30
@@ -64,6 +64,31 @@ export async function getPokemonList(): Promise<PokemonListItem[]> {
         .map(({ name, url }) => ({ id: getSpeciesId(url), slug: name }))
         .filter(({ id }) => id <= LAST_POKEMON_ID)
         .sort((a, b) => a.id - b.id)
+}
+
+export interface TypedPokemon extends PokemonListItem {
+    types: string[];
+}
+
+export async function getTypedPokemon(): Promise<TypedPokemon[]> {
+    const [list, ...byType] = await Promise.all([
+        getPokemonList(),
+        ...POKEMON_TYPES.map((type) =>
+            getJson<{ pokemon: { pokemon: { url: string }; slot: number }[] }>(`type/${type}/`).then(({ pokemon }) => ({ type, pokemon })),
+        ),
+    ])
+    const slots = new Map<number, { type: string; slot: number }[]>()
+    for (const { type, pokemon } of byType) {
+        for (const entry of pokemon) {
+            const id = getSpeciesId(entry.pokemon.url)
+            if (id > LAST_POKEMON_ID) continue
+            slots.set(id, [...(slots.get(id) ?? []), { type, slot: entry.slot }])
+        }
+    }
+    return list.map((item) => ({
+        ...item,
+        types: (slots.get(item.id) ?? []).sort((a, b) => a.slot - b.slot).map(({ type }) => type),
+    }))
 }
 
 export async function getPokemonProfile(slug: string): Promise<PokemonProfile | null> {

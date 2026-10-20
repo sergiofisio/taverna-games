@@ -20,6 +20,7 @@ import {
     typeLabel,
 } from "../../lib/pokemonText";
 import { getDefensiveMatchups } from "../../lib/typeChart";
+import { comboLabel, comboPath } from "../../lib/typeCombos";
 import { getSpeciesArtwork } from "../../lib/sprites";
 import { TYPE_COLORS } from "../../lib/typeColors";
 import { prettify, type Language } from "../../i18n/translations";
@@ -34,7 +35,7 @@ const LABELS = {
         hatch: 'Ciclos de ovo', moves: 'Golpes que aprende', forms: 'Outras formas', previous: 'Anterior', next: 'Próximo',
         play: 'Teste o que você sabe', playText: 'Reconheça este e outros Pokémon pela silhueta, pelo grito ou pela descrição nos desafios diários.',
         playButton: 'Jogar desafios', typeChart: 'Ver a tabela de tipos completa', none: 'Nenhuma', team: 'Dicas para a equipe',
-        statsGuide: 'Entenda os atributos base', evolutionGuide: 'Todos os métodos de evolução',
+        statsGuide: 'Entenda os atributos base', evolutionGuide: 'Todos os métodos de evolução', comboPage: 'Pokémon com os mesmos tipos ({types})',
     },
     en: {
         back: 'Pokédex', about: 'About', stats: 'Base stats', total: 'Total', matchups: 'Weaknesses and resistances',
@@ -45,7 +46,7 @@ const LABELS = {
         hatch: 'Egg cycles', moves: 'Learnable moves', forms: 'Other forms', previous: 'Previous', next: 'Next',
         play: 'Test your knowledge', playText: 'Recognize this and other Pokémon by silhouette, cry or description in the daily challenges.',
         playButton: 'Play challenges', typeChart: 'See the full type chart', none: 'None', team: 'Team tips',
-        statsGuide: 'Understand base stats', evolutionGuide: 'Every evolution method',
+        statsGuide: 'Understand base stats', evolutionGuide: 'Every evolution method', comboPage: 'Pokémon with the same types ({types})',
     },
 } satisfies Record<Language, Record<string, string>>
 
@@ -55,7 +56,7 @@ const statColor = (value: number) => value < 60 ? 'bg-red-500' : value < 90 ? 'b
 function TypeBadge({ type, language }: { type: string; language: Language }) {
     const colors = TYPE_COLORS[type] ?? TYPE_COLORS.normal
     return (
-        <Link href={`/guias/tabela-de-tipos#${type}`} className={`rounded-full px-3 py-1 text-xs font-black uppercase ${colors.card} ${colors.text}`}>
+        <Link href={comboPath([type])} className={`rounded-full px-3 py-1 text-xs font-black uppercase ${colors.card} ${colors.text}`}>
             {typeLabel(type, language)}
         </Link>
     )
@@ -171,7 +172,10 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
                             </div>
                         ))}
                     </dl>
-                    <Link href="/guias/tabela-de-tipos" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.typeChart} →</Link>
+                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                        <Link href={comboPath(profile.types)} className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.comboPage.replace('{types}', comboLabel(profile.types, language))} →</Link>
+                        <Link href="/guias/tabela-de-tipos" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.typeChart} →</Link>
+                    </div>
                 </Section>
             </div>
 

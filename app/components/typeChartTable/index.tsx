@@ -1,6 +1,8 @@
 'use client'
 
+import Link from "next/link";
 import { useLanguage } from "../../context/languageContext";
+import { comboPath } from "../../lib/typeCombos";
 import { POKEMON_TYPES } from "../../lib/pokeapi";
 import { joinList, typeLabel } from "../../lib/pokemonText";
 import { attackMultiplier, getDefensiveMatchups, getOffensiveTargets } from "../../lib/typeChart";
@@ -80,8 +82,10 @@ export default function TypeChartTable() {
                         const defense = getDefensiveMatchups([type])
                         return (
                             <section key={type} id={type} className="scroll-mt-24 rounded-2xl bg-white p-4 shadow dark:bg-zinc-900">
-                                <h3 className={`mb-2 inline-block rounded-full px-3 py-1 text-sm font-black uppercase ${TYPE_COLORS[type]?.card ?? ''} ${TYPE_COLORS[type]?.text ?? ''}`}>
-                                    {label(type)}
+                                <h3 className="mb-2">
+                                    <Link href={comboPath([type])} className={`inline-block rounded-full px-3 py-1 text-sm font-black uppercase ${TYPE_COLORS[type]?.card ?? ''} ${TYPE_COLORS[type]?.text ?? ''}`}>
+                                        {label(type)}
+                                    </Link>
                                 </h3>
                                 <dl className="flex flex-col gap-1 text-sm">
                                     <div><dt className="inline font-bold">{L.strong}: </dt><dd className="inline">{list(offense.strong)}</dd></div>

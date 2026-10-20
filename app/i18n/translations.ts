@@ -583,6 +583,15 @@ const pt = {
     hsArtist: "Artista",
     hsPrevCard: "Anterior",
     hsNextCard: "Próxima",
+    shareResult: "Compartilhar resultado",
+    shareCopied: "Resultado copiado!",
+    shareDaily: "Taverna dos Jogos · {mode} #{n}",
+    shareRandom: "Taverna dos Jogos · {mode} (modo livre)",
+    shareWon: "Acertei em {n} tentativas!",
+    shareWonFirst: "Acertei de primeira! 🎯",
+    shareGaveUp: "Não foi desta vez 😅",
+    shareStreak: "🔥 Sequência: {n}",
+    shareInvite: "Consegue fazer melhor?",
 }
 
 export type MessageKey = keyof typeof pt
@@ -1170,6 +1179,15 @@ const en: Record<MessageKey, string> = {
     hsArtist: "Artist",
     hsPrevCard: "Previous",
     hsNextCard: "Next",
+    shareResult: "Share result",
+    shareCopied: "Result copied!",
+    shareDaily: "Taverna dos Jogos · {mode} #{n}",
+    shareRandom: "Taverna dos Jogos · {mode} (free play)",
+    shareWon: "Got it in {n} guesses!",
+    shareWonFirst: "First try! 🎯",
+    shareGaveUp: "Not this time 😅",
+    shareStreak: "🔥 Streak: {n}",
+    shareInvite: "Can you beat that?",
 }
 
 export const MESSAGES: Record<Language, Record<MessageKey, string>> = { pt, en }
