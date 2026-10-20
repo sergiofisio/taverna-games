@@ -592,6 +592,10 @@ const pt = {
     shareGaveUp: "Não foi desta vez 😅",
     shareStreak: "🔥 Sequência: {n}",
     shareInvite: "Consegue fazer melhor?",
+    hsPacks: "Simulador de pacotes",
+    hsPacksDesc: "Abra pacotes de qualquer coleção e veja lendárias, douradas e o pó das repetidas.",
+    hsSets: "Coleções",
+    hsSetsDesc: "Todas as expansões, com as cartas de cada uma e o custo para completar.",
 }
 
 export type MessageKey = keyof typeof pt
@@ -1188,6 +1192,10 @@ const en: Record<MessageKey, string> = {
     shareGaveUp: "Not this time 😅",
     shareStreak: "🔥 Streak: {n}",
     shareInvite: "Can you beat that?",
+    hsPacks: "Pack simulator",
+    hsPacksDesc: "Open packs from any set and see legendaries, goldens and duplicate dust.",
+    hsSets: "Sets",
+    hsSetsDesc: "Every expansion, with its cards and the cost to complete it.",
 }
 
 export const MESSAGES: Record<Language, Record<MessageKey, string>> = { pt, en }

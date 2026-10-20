@@ -18,6 +18,8 @@ const SECTIONS: { href: string; title: MessageKey; text: MessageKey; icon: strin
     { href: '/hearthstone/cartas', title: 'hsLibrary', text: 'hsLibraryDesc', icon: '📚', className: 'from-sky-700 to-indigo-900' },
     { href: '/desafios/hs-atributos', title: 'hsHearthdle', text: 'hsHearthdleDesc', icon: '🃏', className: 'from-amber-500 to-orange-800' },
     { href: '/hearthstone/decks', title: 'hsDecks', text: 'hsDecksDesc', icon: '🛠️', className: 'from-emerald-700 to-teal-900' },
+    { href: '/hearthstone/pacotes', title: 'hsPacks', text: 'hsPacksDesc', icon: '🎁', className: 'from-fuchsia-700 to-purple-950' },
+    { href: '/hearthstone/colecoes', title: 'hsSets', text: 'hsSetsDesc', icon: '🗂️', className: 'from-stone-600 to-stone-900' },
 ]
 
 const BASICS: { title: MessageKey; text: MessageKey }[] = [
