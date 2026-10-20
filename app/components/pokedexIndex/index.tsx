@@ -8,8 +8,8 @@ import { REGIONS } from "../../lib/pokemonText";
 import { prettify } from "../../i18n/translations";
 
 const LABELS = {
-    pt: { title: 'Todos os Pokémon', text: 'Abra a página de cada Pokémon para ver tipos, fraquezas, atributos, evoluções e dicas de batalha.', count: '{n} Pokémon', calculator: 'Calculadora de fraquezas', team: 'Montador de time', compare: 'Comparador de Pokémon' },
-    en: { title: 'Every Pokémon', text: 'Open each Pokémon’s page to see its types, weaknesses, stats, evolutions and battle tips.', count: '{n} Pokémon', calculator: 'Weakness calculator', team: 'Team builder', compare: 'Pokémon comparison' },
+    pt: { title: 'Todos os Pokémon', text: 'Abra a página de cada Pokémon para ver tipos, fraquezas, atributos, evoluções e dicas de batalha.', count: '{n} Pokémon', calculator: 'Calculadora de fraquezas', team: 'Montador de time', compare: 'Comparador de Pokémon', moves: 'Golpes', abilities: 'Habilidades' },
+    en: { title: 'Every Pokémon', text: 'Open each Pokémon’s page to see its types, weaknesses, stats, evolutions and battle tips.', count: '{n} Pokémon', calculator: 'Weakness calculator', team: 'Team builder', compare: 'Pokémon comparison', moves: 'Moves', abilities: 'Abilities' },
 }
 
 export default function PokedexIndex({ list }: { list: PokemonListItem[] }) {
@@ -26,7 +26,7 @@ export default function PokedexIndex({ list }: { list: PokemonListItem[] }) {
             <h2 id="pokedex-index-title" className="text-xl font-black">{L.title}</h2>
             <p className="text-zinc-700 dark:text-zinc-300">{L.text}</p>
             <div className="flex flex-wrap gap-2">
-                {([['/pokemon/tipos', L.calculator], ['/pokemon/time', L.team], ['/pokemon/comparar', L.compare]] as const).map(([href, label]) => (
+                {([['/pokemon/tipos', L.calculator], ['/pokemon/time', L.team], ['/pokemon/comparar', L.compare], ['/pokemon/golpes', L.moves], ['/pokemon/habilidades', L.abilities]] as const).map(([href, label]) => (
                     <Link key={href} href={href} className="rounded-full bg-red-600 px-4 py-2 text-sm font-black text-white hover:bg-red-700">{label} →</Link>
                 ))}
             </div>

@@ -48,9 +48,9 @@ export interface PokemonProfile {
     next: PokemonListItem | null;
 }
 
-class NotFoundError extends Error {}
+export class NotFoundError extends Error {}
 
-async function getJson<T>(path: string): Promise<T> {
+export async function getJson<T>(path: string): Promise<T> {
     const url = path.startsWith('http') ? path : `${API_URL}${path}`
     const response = await fetch(url, { next: { revalidate: POKEMON_REVALIDATE } })
     if (response.status === 404) throw new NotFoundError(url)

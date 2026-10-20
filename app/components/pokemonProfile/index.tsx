@@ -220,7 +220,13 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
                     <div className="rounded-xl bg-zinc-100 p-3 dark:bg-zinc-800 sm:col-span-2 lg:col-span-3">
                         <dt className="text-xs font-bold uppercase text-zinc-500 dark:text-zinc-400">{L.abilities}</dt>
                         <dd className="font-bold">
-                            {profile.abilities.map(({ name, hidden }) => `${prettify(name)}${hidden ? ` (${L.hiddenAbility})` : ''}`).join(' · ')}
+                            {profile.abilities.map(({ name, hidden }, index) => (
+                                <span key={name}>
+                                    {index > 0 && ' · '}
+                                    <Link href={`/pokemon/habilidades/${name}`} className="underline-offset-2 hover:underline">{prettify(name)}</Link>
+                                    {hidden && ` (${L.hiddenAbility})`}
+                                </span>
+                            ))}
                         </dd>
                     </div>
                     {facts.map(([label, value]) => (
