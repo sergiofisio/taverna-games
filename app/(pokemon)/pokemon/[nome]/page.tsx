@@ -4,6 +4,7 @@ import PokemonProfileView from "../../../components/pokemonProfile";
 import AdScript from "../../../components/ads/adScript";
 import JsonLd from "../../../components/jsonLd";
 import { getPokemonProfile } from "../../../lib/pokemonServer";
+import { getCardsForDex } from "../../../lib/tcgpServer";
 import { pokemonMetaDescription } from "../../../lib/pokemonText";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 import { getOfficialArtwork } from "../../../lib/sprites";
@@ -29,7 +30,7 @@ export default async function PokemonDetailPage({ params }: Props) {
   return (
     <div className="flex w-full flex-1 bg-zinc-100 dark:bg-zinc-950">
       <AdScript />
-      <PokemonProfileView profile={profile} />
+      <PokemonProfileView profile={profile} tcgCards={await getCardsForDex(profile.id).catch(() => [])} />
       <JsonLd data={breadcrumbJsonLd([['Pokédex', '/pokemon'], [profile.name, `/pokemon/${profile.slug}`]])} />
       <JsonLd
         data={{

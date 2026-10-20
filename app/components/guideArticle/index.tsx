@@ -10,19 +10,19 @@ const LABELS = {
     pt: {
         guides: 'Guias', updated: 'Atualizado em {date}', title: 'Guias da Taverna',
         intro: 'Artigos escritos por nós para ajudar você a jogar melhor e aproveitar as ferramentas do site.',
-        pokemon: 'Pokémon', hearthstone: 'Hearthstone', lol: 'League of Legends', anime: 'Animes', read: 'Ler guia',
+        pokemon: 'Pokémon', hearthstone: 'Hearthstone', lol: 'League of Legends', anime: 'Animes', tcg: 'Pokémon TCG Pocket', read: 'Ler guia',
     },
     en: {
         guides: 'Guides', updated: 'Updated on {date}', title: 'Tavern guides',
         intro: 'Articles we wrote to help you play better and get the most out of the site’s tools.',
-        pokemon: 'Pokémon', hearthstone: 'Hearthstone', lol: 'League of Legends', anime: 'Anime', read: 'Read guide',
+        pokemon: 'Pokémon', hearthstone: 'Hearthstone', lol: 'League of Legends', anime: 'Anime', tcg: 'Pokémon TCG Pocket', read: 'Read guide',
     },
 } satisfies Record<Language, Record<string, string>>
 
 export function GuideIndex({ guides }: { guides: Guide[] }) {
     const { language } = useLanguage()
     const L = LABELS[language]
-    const worlds: GuideWorld[] = ['pokemon', 'hearthstone', 'lol', 'anime']
+    const worlds: GuideWorld[] = ['pokemon', 'hearthstone', 'lol', 'anime', 'tcg']
 
     return (
         <article className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-4 py-10">
@@ -38,7 +38,7 @@ export function GuideIndex({ guides }: { guides: Guide[] }) {
                             <li key={guide.slug}>
                                 <Link
                                     href={`/guias/${guide.slug}`}
-                                    className={`flex h-full flex-col gap-2 rounded-2xl p-5 shadow transition hover:-translate-y-0.5 hover:shadow-lg ${world === 'pokemon' ? 'bg-red-50 dark:bg-red-950/40' : world === 'lol' ? 'bg-sky-50 dark:bg-sky-950/40' : world === 'anime' ? 'bg-pink-50 dark:bg-pink-950/40' : 'bg-amber-50 dark:bg-amber-950/40'}`}
+                                    className={`flex h-full flex-col gap-2 rounded-2xl p-5 shadow transition hover:-translate-y-0.5 hover:shadow-lg ${world === 'pokemon' ? 'bg-red-50 dark:bg-red-950/40' : world === 'lol' ? 'bg-sky-50 dark:bg-sky-950/40' : world === 'anime' ? 'bg-pink-50 dark:bg-pink-950/40' : world === 'tcg' ? 'bg-cyan-50 dark:bg-cyan-950/40' : 'bg-amber-50 dark:bg-amber-950/40'}`}
                                 >
                                     <span className="text-lg font-black">{guide.content[language].title}</span>
                                     <span className="text-sm text-zinc-600 dark:text-zinc-400">{guide.content[language].description}</span>

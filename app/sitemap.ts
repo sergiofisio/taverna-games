@@ -7,6 +7,8 @@ import { championPath } from "./lib/lol";
 import { getLolData } from "./lib/lolServer";
 import { ANIME_GENRES, animePath, genreSlug } from "./lib/anime";
 import { getAnimePool } from "./lib/animeServer";
+import { tcgpSetPath } from "./lib/tcgp";
+import { getTcgpData } from "./lib/tcgpServer";
 import { getTypedPokemon } from "./lib/pokemonServer";
 import { allCombos, comboPath, hasSameTypes } from "./lib/typeCombos";
 import { localePath } from "./lib/localePath";
@@ -34,6 +36,11 @@ const PAGES: Entry[] = [
   ['/animes/populares', 'weekly', 0.8],
   ['/animes/temporada', 'daily', 0.8],
   ...Object.keys(ANIME_GENRES).map((genre): Entry => [`/animes/generos/${genreSlug(genre)}`, 'weekly', 0.6]),
+  ['/tcg-pocket', 'weekly', 0.9],
+  ['/tcg-pocket/cartas', 'weekly', 0.8],
+  ['/tcg-pocket/colecoes', 'monthly', 0.8],
+  ['/tcg-pocket/pacotes', 'monthly', 0.7],
+  ['/tcg-pocket/decks', 'monthly', 0.7],
   ['/guias', 'monthly', 0.8],
   ...GUIDES.map(({ slug }): Entry => [`/guias/${slug}`, 'monthly', 0.8]),
   ['/sobre', 'yearly', 0.5],
@@ -45,11 +52,12 @@ const PAGES: Entry[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  const [pokemon, sets, lol, anime] = await Promise.all([
+  const [pokemon, sets, lol, anime, tcgp] = await Promise.all([
     getTypedPokemon().catch(() => []),
     getSetSummaries().catch(() => []),
     getLolData().then(({ champions }) => champions).catch(() => []),
     getAnimePool().catch(() => []),
+    getTcgpData().then(({ sets: tcgpSets }) => tcgpSets).catch(() => []),
   ])
   const combos = allCombos().filter((types) => pokemon.some((entry) => hasSameTypes(entry.types, types)))
   const entries: Entry[] = [
@@ -65,6 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),
     ...lol.map((champion): Entry => [championPath(champion), 'monthly', 0.7]),
     ...anime.map((entry): Entry => [animePath(entry), 'monthly', 0.6]),
+    ...tcgp.map((set): Entry => [tcgpSetPath(set), 'monthly', 0.7]),
   ]
   return entries.map(([path, changeFrequency, priority]) => ({
     url: absoluteUrl(path),

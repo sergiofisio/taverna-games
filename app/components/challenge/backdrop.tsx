@@ -8,10 +8,19 @@ import type { GameWorld } from "../../lib/challenge";
 import Tavern from "../hearthstone/tavern";
 import Rift from "../lol/rift";
 import Sakura from "../anime/sakura";
+import { PocketBackdrop } from "../tcgp/shared";
 
 export default function ChallengeBackdrop({ generation, world = 'pokemon', children }: { generation: number; world?: GameWorld; children: ReactNode }) {
     const { t } = useLanguage()
     const region = GENERATIONS.find(({ id }) => id === generation) ?? GENERATIONS[0]
+
+    if (world === 'tcg') {
+        return (
+            <PocketBackdrop>
+                <section className="flex min-w-0 flex-1 flex-col">{children}</section>
+            </PocketBackdrop>
+        )
+    }
 
     if (world === 'anime') {
         return (

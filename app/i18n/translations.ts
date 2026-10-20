@@ -367,7 +367,7 @@ const pt = {
     navPokemon: 'Pokémon',
     navHearthstone: 'Hearthstone',
     navDuel: 'Duelo',
-    footerTrademarks: 'Pokémon e seus personagens são marcas de Nintendo, Game Freak e The Pokémon Company. Hearthstone é marca da Blizzard Entertainment. A Taverna dos Jogos não é endossada pela Riot Games e não reflete as opiniões da Riot Games ou de qualquer pessoa oficialmente envolvida na produção ou gestão de League of Legends. League of Legends e Riot Games são marcas registradas da Riot Games, Inc. Os animes e personagens pertencem aos seus autores e estúdios; dados de animes fornecidos pelo AniList. Site não oficial, sem vínculo com essas empresas.',
+    footerTrademarks: 'Pokémon e seus personagens são marcas de Nintendo, Game Freak e The Pokémon Company. Hearthstone é marca da Blizzard Entertainment. A Taverna dos Jogos não é endossada pela Riot Games e não reflete as opiniões da Riot Games ou de qualquer pessoa oficialmente envolvida na produção ou gestão de League of Legends. League of Legends e Riot Games são marcas registradas da Riot Games, Inc. Os animes e personagens pertencem aos seus autores e estúdios; dados de animes fornecidos pelo AniList. Pokémon Estampas Ilustradas Pocket é marca de The Pokémon Company, Creatures e DeNA; dados das cartas fornecidos pela TCGdex. Site não oficial, sem vínculo com essas empresas.',
     privacyTitle: 'Privacidade',
     termsTitle: 'Termos de uso',
     hubTitle: 'Escolha o seu mundo',
@@ -628,6 +628,16 @@ const pt = {
     viewAnime: "Ver anime",
     newAnime: "Novo anime",
     navAnime: "Animes",
+    modeTcgAtributos: "Pocketdle Clássico",
+    modeTcgAtributosDesc: "Compare tipo, estágio, HP, raridade, coleção, recuo e fraqueza até achar a carta.",
+    modeTcgArte: "Ilustração",
+    modeTcgArteDesc: "Descubra a carta pela ilustração ampliada e desfocada.",
+    howtoTcgAtributos: "Escolha uma carta do Pokémon TCG Pocket: cada palpite compara tipo, estágio, HP, raridade, coleção, custo de recuo e fraqueza com a carta secreta. As setas indicam se o valor certo é maior ou, na coleção, se ela é mais nova ou mais antiga. Atenção: o mesmo Pokémon aparece em várias cartas diferentes.",
+    howtoTcgArte: "A ilustração da carta começa bem ampliada e desfocada, e cada erro revela um pouco mais. Repare no estilo do ilustrador e no fundo: cartas de raridade alta costumam ter arte de página inteira.",
+    hubTcgTitle: "Pokémon TCG Pocket",
+    hubTcgPortalTitle: "TCG Pocket",
+    hubTcgText: "Todas as cartas do Pokémon TCG Pocket, simulador de pacotes, montador de decks e o Pocketdle diário.",
+    navTcg: "TCG Pocket",
 }
 
 export type MessageKey = keyof typeof pt
@@ -999,7 +1009,7 @@ const en: Record<MessageKey, string> = {
     navPokemon: 'Pokémon',
     navHearthstone: 'Hearthstone',
     navDuel: 'Duel',
-    footerTrademarks: 'Pokémon and its characters are trademarks of Nintendo, Game Freak and The Pokémon Company. Hearthstone is a trademark of Blizzard Entertainment. Taverna dos Jogos isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. Anime titles and characters belong to their authors and studios; anime data provided by AniList. Unofficial site, not affiliated with these companies.',
+    footerTrademarks: 'Pokémon and its characters are trademarks of Nintendo, Game Freak and The Pokémon Company. Hearthstone is a trademark of Blizzard Entertainment. Taverna dos Jogos isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. Anime titles and characters belong to their authors and studios; anime data provided by AniList. Pokémon Trading Card Game Pocket is a trademark of The Pokémon Company, Creatures and DeNA; card data provided by TCGdex. Unofficial site, not affiliated with these companies.',
     privacyTitle: 'Privacy',
     termsTitle: 'Terms of use',
     hubTitle: 'Choose your world',
@@ -1260,6 +1270,16 @@ const en: Record<MessageKey, string> = {
     viewAnime: "View anime",
     newAnime: "New anime",
     navAnime: "Anime",
+    modeTcgAtributos: "Classic Pocketdle",
+    modeTcgAtributosDesc: "Compare type, stage, HP, rarity, set, retreat and weakness until you find the card.",
+    modeTcgArte: "Illustration",
+    modeTcgArteDesc: "Find the card from its zoomed, blurred illustration.",
+    howtoTcgAtributos: "Pick a Pokémon TCG Pocket card: each guess compares type, stage, HP, rarity, set, retreat cost and weakness with the secret card. Arrows show whether the right value is higher or, for sets, newer or older. Watch out: the same Pokémon appears on several different cards.",
+    howtoTcgArte: "The card illustration starts heavily zoomed and blurred, and each miss reveals a little more. Watch the illustrator's style and the background: high-rarity cards often have full-art illustrations.",
+    hubTcgTitle: "Pokémon TCG Pocket",
+    hubTcgPortalTitle: "TCG Pocket",
+    hubTcgText: "Every Pokémon TCG Pocket card, a pack simulator, deck builder and the daily Pocketdle.",
+    navTcg: "TCG Pocket",
 }
 
 export const MESSAGES: Record<Language, Record<MessageKey, string>> = { pt, en }

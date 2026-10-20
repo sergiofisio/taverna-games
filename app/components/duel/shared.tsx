@@ -17,6 +17,8 @@ import { championIcon, championName } from "../../lib/lol";
 import { useLolData } from "../lol/data";
 import { animeTitle } from "../../lib/anime";
 import { useAnimePool } from "../anime/data";
+import { TCGP_POOL, tcgpName } from "../../lib/tcgp";
+import { TcgpCardImage, useTcgpData } from "../tcgp/shared";
 
 export function DuelGate({ children }: { children: (userId: string, playerName: string) => ReactNode }) {
     const { t } = useLanguage()
@@ -114,7 +116,21 @@ export function RoundAnswer({ mode, target }: { mode: ChallengeMode; target: num
     if (getModeWorld(mode) === 'hearthstone') return <CardRoundAnswer dbfId={getSolution(mode, target)[0]} />
     if (getModeWorld(mode) === 'lol') return <ChampionRoundAnswer championKey={getSolution(mode, target)[0]} />
     if (getModeWorld(mode) === 'anime') return <AnimeRoundAnswer animeId={getSolution(mode, target)[0]} />
+    if (getModeWorld(mode) === 'tcg') return <TcgpRoundAnswer index={getSolution(mode, target)[0]} />
     return <PokemonRoundAnswer mode={mode} target={target} />
+}
+
+function TcgpRoundAnswer({ index }: { index: number }) {
+    const { language } = useLanguage()
+    const state = useTcgpData()
+    const card = state?.status === 'success' ? state.data.byId.get(TCGP_POOL[index]) : undefined
+    if (!card) return null
+    return (
+        <span className="flex items-center justify-center gap-3 font-black">
+            <span className="w-12"><TcgpCardImage card={card} /></span>
+            {tcgpName(card, language)}
+        </span>
+    )
 }
 
 function AnimeRoundAnswer({ animeId }: { animeId: number }) {

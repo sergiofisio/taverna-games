@@ -12,6 +12,7 @@ const LINKS: { href: string; label: MessageKey }[] = [
   { href: '/hearthstone', label: 'navHearthstone' },
   { href: '/lol', label: 'navLol' },
   { href: '/animes', label: 'navAnime' },
+  { href: '/tcg-pocket', label: 'navTcg' },
   { href: '/desafios', label: 'navChallenges' },
   { href: '/duelo', label: 'navDuel' },
   { href: '/guias', label: 'guidesTitle' },

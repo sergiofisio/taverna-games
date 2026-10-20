@@ -27,6 +27,8 @@ const HOW_TO: Record<ChallengeMode, MessageKey> = {
   'anime-atributos': 'howtoAnimeAtributos',
   'anime-capa': 'howtoAnimeCapa',
   'anime-personagem': 'howtoAnimePersonagem',
+  'tcg-atributos': 'howtoTcgAtributos',
+  'tcg-arte': 'howtoTcgArte',
 };
 
 const modeTitle = (mode: ChallengeMode, language: Language = 'pt') => {
@@ -34,6 +36,7 @@ const modeTitle = (mode: ChallengeMode, language: Language = 'pt') => {
   if (getModeWorld(mode) === 'pokemon') return `${title} · ${language === 'en' ? 'Pokémon challenge' : 'Desafio Pokémon'}`
   if (getModeWorld(mode) === 'lol') return `${title} · LoLdle`
   if (getModeWorld(mode) === 'anime') return `${title} · Animedle`
+  if (getModeWorld(mode) === 'tcg') return `${title} · TCG Pocket`
   return title.includes('Hearthdle') ? title : `${title} · Hearthdle`
 }
 

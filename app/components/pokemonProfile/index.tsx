@@ -21,6 +21,9 @@ import {
 } from "../../lib/pokemonText";
 import { getDefensiveMatchups } from "../../lib/typeChart";
 import { comboLabel, comboPath } from "../../lib/typeCombos";
+import { tcgpCardPath, type TcgpCard } from "../../lib/tcgp";
+import type { CardSummary } from "../../lib/tcgpServer";
+import { TcgpCardImage } from "../tcgp/shared";
 import { getSpeciesArtwork } from "../../lib/sprites";
 import { TYPE_COLORS } from "../../lib/typeColors";
 import { prettify, type Language } from "../../i18n/translations";
@@ -35,7 +38,7 @@ const LABELS = {
         hatch: 'Ciclos de ovo', moves: 'Golpes que aprende', forms: 'Outras formas', previous: 'Anterior', next: 'Próximo',
         play: 'Teste o que você sabe', playText: 'Reconheça este e outros Pokémon pela silhueta, pelo grito ou pela descrição nos desafios diários.',
         playButton: 'Jogar desafios', typeChart: 'Ver a tabela de tipos completa', none: 'Nenhuma', team: 'Dicas para a equipe',
-        statsGuide: 'Entenda os atributos base', evolutionGuide: 'Todos os métodos de evolução', comboPage: 'Pokémon com os mesmos tipos ({types})',
+        statsGuide: 'Entenda os atributos base', evolutionGuide: 'Todos os métodos de evolução', comboPage: 'Pokémon com os mesmos tipos ({types})', tcgCards: 'Cartas no TCG Pocket ({n})',
     },
     en: {
         back: 'Pokédex', about: 'About', stats: 'Base stats', total: 'Total', matchups: 'Weaknesses and resistances',
@@ -46,7 +49,7 @@ const LABELS = {
         hatch: 'Egg cycles', moves: 'Learnable moves', forms: 'Other forms', previous: 'Previous', next: 'Next',
         play: 'Test your knowledge', playText: 'Recognize this and other Pokémon by silhouette, cry or description in the daily challenges.',
         playButton: 'Play challenges', typeChart: 'See the full type chart', none: 'None', team: 'Team tips',
-        statsGuide: 'Understand base stats', evolutionGuide: 'Every evolution method', comboPage: 'Pokémon with the same types ({types})',
+        statsGuide: 'Understand base stats', evolutionGuide: 'Every evolution method', comboPage: 'Pokémon with the same types ({types})', tcgCards: 'TCG Pocket cards ({n})',
     },
 } satisfies Record<Language, Record<string, string>>
 
@@ -77,7 +80,7 @@ function Section({ title, children, delay = 0 }: { title: string; children: Reac
     )
 }
 
-export default function PokemonProfileView({ profile }: { profile: PokemonProfile }) {
+export default function PokemonProfileView({ profile, tcgCards = [] }: { profile: PokemonProfile; tcgCards?: CardSummary[] }) {
     const { language, t, itemName, typeName } = useLanguage()
     const L = LABELS[language]
     const text = describePokemon(profile, language)
@@ -213,6 +216,19 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
                 )}
                 <Link href="/guias/metodos-de-evolucao-pokemon" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.evolutionGuide} →</Link>
             </Section>
+
+            {tcgCards.length > 0 && (
+                <Section title={L.tcgCards.replace('{n}', String(tcgCards.length))}>
+                    <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-8">
+                        {tcgCards.slice(0, 16).map((card) => (
+                            <li key={card.id}>
+                                <Link href={tcgpCardPath(card)} prefetch={false} className="block transition hover:-translate-y-1"><TcgpCardImage card={card as TcgpCard} /></Link>
+                            </li>
+                        ))}
+                    </ul>
+                    <Link href="/tcg-pocket" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">Pokémon TCG Pocket →</Link>
+                </Section>
+            )}
 
             <Section title={L.training}>
                 <p className="leading-relaxed">{text.training}</p>

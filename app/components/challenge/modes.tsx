@@ -18,6 +18,8 @@ export const MODE_META: Record<ChallengeMode, { title: MessageKey; description: 
     'anime-atributos': { title: 'modeAnimeAtributos', description: 'modeAnimeAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-fuchsia-600 to-purple-950' },
     'anime-capa': { title: 'modeAnimeCapa', description: 'modeAnimeCapaDesc', generation: 0, accent: 'bg-linear-to-br from-pink-500 to-rose-900' },
     'anime-personagem': { title: 'modeAnimePersonagem', description: 'modeAnimePersonagemDesc', generation: 0, accent: 'bg-linear-to-br from-violet-500 to-indigo-950' },
+    'tcg-atributos': { title: 'modeTcgAtributos', description: 'modeTcgAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-sky-500 to-indigo-800' },
+    'tcg-arte': { title: 'modeTcgArte', description: 'modeTcgArteDesc', generation: 0, accent: 'bg-linear-to-br from-cyan-500 to-sky-900' },
 }
 
 export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode; className?: string }) {
@@ -131,6 +133,20 @@ export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode;
                 <svg {...common}>
                     <circle cx="12" cy="9" r="4" fill="currentColor" fillOpacity="0.25" />
                     <path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5" />
+                </svg>
+            )
+        case 'tcg-atributos':
+            return (
+                <svg {...common}>
+                    <rect x="6" y="3" width="12" height="18" rx="2" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M9 9h6M9 13h4" />
+                </svg>
+            )
+        case 'tcg-arte':
+            return (
+                <svg {...common}>
+                    <rect x="6" y="3" width="12" height="18" rx="2" fill="currentColor" fillOpacity="0.2" />
+                    <circle cx="12" cy="10" r="3" />
                 </svg>
             )
         case 'infinito':

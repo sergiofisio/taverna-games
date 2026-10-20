@@ -7,6 +7,8 @@ import ChampionModal from "../lol/championModal";
 import { useLolData } from "../lol/data";
 import AnimeModal from "../anime/animeModal";
 import { useAnimePool } from "../anime/data";
+import { TcgpCardModal, useTcgpData } from "../tcgp/shared";
+import { TCGP_POOL } from "../../lib/tcgp";
 import type { GameWorld } from "../../lib/challenge";
 
 const NO_NAVIGATION: number[] = []
@@ -22,7 +24,13 @@ export default function DetailModal({ world, id, onClose, onNavigate }: DetailMo
     if (world === 'hearthstone') return <CardDetailModal id={id} onClose={onClose} />
     if (world === 'lol') return <ChampionDetailModal id={id} onClose={onClose} />
     if (world === 'anime') return <AnimeDetailModal id={id} onClose={onClose} />
+    if (world === 'tcg') return <TcgpDetailModal id={id} onClose={onClose} />
     return <PokedexModal speciesId={id} navigationIds={NO_NAVIGATION} onClose={onClose} onNavigate={onNavigate} />
+}
+
+function TcgpDetailModal({ id, onClose }: { id: number | null; onClose: () => void }) {
+    const state = useTcgpData()
+    return <TcgpCardModal data={state?.status === 'success' ? state.data : null} cardId={id === null ? null : TCGP_POOL[id] ?? null} onClose={onClose} />
 }
 
 function AnimeDetailModal({ id, onClose }: { id: number | null; onClose: () => void }) {
