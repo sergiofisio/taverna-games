@@ -12,6 +12,7 @@ import { SITE_NAME, getWorld, type World } from "../../lib/site";
 const WORLD_STYLES: Record<World, string> = {
   pokemon: 'border-red-900 bg-red-600 dark:bg-red-800',
   hearthstone: 'border-amber-950 bg-linear-to-r from-amber-900 via-amber-800 to-amber-900',
+  lol: 'border-[#785a28] bg-linear-to-r from-[#010a13] via-[#0a3a4a] to-[#010a13]',
   neutral: 'border-zinc-950 bg-linear-to-r from-red-700 via-zinc-900 to-amber-800',
 }
 

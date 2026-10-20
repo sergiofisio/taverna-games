@@ -2,7 +2,7 @@ import type { Language } from "../i18n/translations";
 
 export type GuideSection = { title: string; paragraphs: string[] }
 export type GuideContent = { title: string; description: string; intro: string; sections: GuideSection[] }
-export type GuideWorld = 'pokemon' | 'hearthstone'
+export type GuideWorld = 'pokemon' | 'hearthstone' | 'lol'
 
 export interface Guide {
     slug: string
@@ -887,6 +887,154 @@ export const GUIDES: Guide[] = [
                         paragraphs: [
                             'In Art mode, the illustration starts zoomed in and blurred. Watch the dominant colors and the setting: green and purple tones hint at Warlock and Demon Hunter, icy blue at Mage and Death Knight.',
                             'In Text mode, look for keywords and numbers. Effects like Overload, Combo and Outcast reveal the class instantly, and the damage or healing amount usually hints at the card’s approximate cost.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'posicoes-league-of-legends',
+        world: 'lol',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Posições do League of Legends: topo, selva, meio, atirador e suporte',
+                description: 'O que faz cada posição de Summoner\'s Rift, que tipo de campeão costuma ocupar cada rota e como escolher a sua.',
+                intro: 'Toda partida de League of Legends em Summoner\'s Rift divide os cinco jogadores do time em posições. Entender o papel de cada uma ajuda a escolher campeões, a se posicionar nas lutas e a jogar em equipe.',
+                sections: [
+                    {
+                        title: 'Topo (top)',
+                        paragraphs: [
+                            'A rota de cima é a mais isolada do mapa. Quem joga no topo costuma passar boa parte da partida em duelos de um contra um, por isso a posição recebe lutadores e tanques resistentes, capazes de aguentar pressão e de virar a linha de frente nas lutas de time.',
+                            'Um bom topo sabe quando empurrar a rota e quando usar o Teleporte para ajudar o time em outro lugar do mapa.',
+                        ],
+                    },
+                    {
+                        title: 'Selva (jungle)',
+                        paragraphs: [
+                            'O caçador não tem rota fixa: ele derrota os monstros neutros da selva, ajuda as outras rotas com emboscadas e disputa objetivos como Dragões, o Arauto e o Barão. É a posição que mais exige leitura do mapa e controle do tempo.',
+                            'Campeões com boa mobilidade, controle de grupo ou dano rápido costumam se dar bem na selva.',
+                        ],
+                    },
+                    {
+                        title: 'Meio (mid)',
+                        paragraphs: [
+                            'A rota do meio é a mais curta, o que permite chegar rápido às rotas vizinhas. Por isso recebe magos e assassinos, que causam muito dano em pouco tempo e podem ajudar o caçador em jogadas pelo mapa.',
+                        ],
+                    },
+                    {
+                        title: 'Atirador e suporte (rota inferior)',
+                        paragraphs: [
+                            'Na rota de baixo jogam dois campeões. O atirador causa dano contínuo com ataques básicos e fica muito forte com itens, mas é frágil no começo; o suporte protege o atirador, controla a visão do mapa com sentinelas e inicia ou impede lutas.',
+                            'Suportes podem ser encantadores, que curam e dão escudos, ou tanques e iniciadores, que prendem os inimigos para o time atacar.',
+                        ],
+                    },
+                    {
+                        title: 'Como escolher a sua posição',
+                        paragraphs: [
+                            'Se você gosta de duelos, experimente o topo. Se prefere decidir o rumo da partida, tente a selva. Para quem gosta de dano e jogadas rápidas, o meio é o lugar. E se você gosta de jogar em dupla ou de ajudar o time, o atirador e o suporte são ótimos começos. A página de cada campeão na Taverna mostra a classe e a dificuldade para ajudar na escolha.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'League of Legends positions: top, jungle, mid, bot and support',
+                description: 'What each Summoner\'s Rift position does, which kind of champion usually plays each lane and how to pick yours.',
+                intro: 'Every League of Legends match on Summoner\'s Rift splits a team\'s five players into positions. Understanding each role helps you pick champions, position yourself in fights and play as a team.',
+                sections: [
+                    {
+                        title: 'Top',
+                        paragraphs: [
+                            'The top lane is the most isolated on the map. Top laners spend much of the game in one-on-one duels, so the position suits durable fighters and tanks that can handle pressure and become the frontline in team fights.',
+                            'A good top laner knows when to push the lane and when to use Teleport to help the team elsewhere on the map.',
+                        ],
+                    },
+                    {
+                        title: 'Jungle',
+                        paragraphs: [
+                            'The jungler has no fixed lane: they defeat neutral jungle monsters, help other lanes with ganks and contest objectives like Dragons, the Herald and Baron. It is the position that demands the most map awareness and timing.',
+                            'Champions with good mobility, crowd control or burst damage usually do well in the jungle.',
+                        ],
+                    },
+                    {
+                        title: 'Mid',
+                        paragraphs: [
+                            'The mid lane is the shortest, letting you reach neighboring lanes quickly. That is why it suits mages and assassins, who deal a lot of damage in a short time and can help the jungler with plays around the map.',
+                        ],
+                    },
+                    {
+                        title: 'Bot lane: marksman and support',
+                        paragraphs: [
+                            'Two champions play the bottom lane. The marksman deals steady damage with basic attacks and scales hard with items but is fragile early; the support protects the marksman, controls vision with wards and starts or stops fights.',
+                            'Supports can be enchanters, who heal and shield, or tanks and engagers, who lock down enemies for the team.',
+                        ],
+                    },
+                    {
+                        title: 'How to pick your position',
+                        paragraphs: [
+                            'If you like duels, try top. If you prefer steering the match, try jungle. For damage and fast plays, mid is the place. And if you enjoy playing as a pair or helping the team, marksman and support are great starts. Each champion page at the Tavern shows class and difficulty to help you choose.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'primeiro-campeao-league-of-legends',
+        world: 'lol',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Como escolher o seu primeiro campeão no League of Legends',
+                description: 'Dicas para quem está começando: como usar a dificuldade, a classe e o tipo de ataque para escolher campeões fáceis de aprender.',
+                intro: 'Com mais de 170 campeões, escolher o primeiro pode assustar. A boa notícia é que dá para reduzir as opções olhando três coisas: a dificuldade, a classe e se o campeão ataca de perto ou de longe.',
+                sections: [
+                    {
+                        title: 'Comece pela dificuldade',
+                        paragraphs: [
+                            'A Riot dá uma nota de 1 a 10 para a dificuldade de cada campeão. Para começar, prefira campeões com nota até 4: os kits são mais diretos, os combos são simples e erros pesam menos. Você encontra essa nota na página de cada campeão na Taverna.',
+                        ],
+                    },
+                    {
+                        title: 'Escolha um estilo que combine com você',
+                        paragraphs: [
+                            'Tanques e lutadores perdoam erros de posicionamento, porque aguentam mais dano. Atiradores e magos causam muito dano, mas precisam ficar a uma distância segura. Assassinos são empolgantes, mas exigem saber a hora certa de entrar e sair da luta.',
+                            'Campeões que atacam à distância ajudam a aprender a manter distância dos inimigos; os de corpo a corpo ensinam a escolher bem a hora de entrar na briga.',
+                        ],
+                    },
+                    {
+                        title: 'Aprenda um ou dois campeões a fundo',
+                        paragraphs: [
+                            'Em vez de testar um campeão diferente a cada partida, jogue várias vezes com o mesmo. Você aprende o alcance das habilidades, o tempo de recarga e o que fazer contra cada adversário, e isso vale mais do que conhecer muitos campeões por cima.',
+                            'Leia as dicas para jogar com e contra o campeão na página dele. E, para treinar o reconhecimento, jogue os desafios diários do LoLdle na Taverna.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'How to pick your first League of Legends champion',
+                description: 'Beginner tips: how to use difficulty, class and attack type to pick champions that are easy to learn.',
+                intro: 'With more than 170 champions, picking the first one can be daunting. The good news is you can narrow it down by looking at three things: difficulty, class and whether the champion attacks up close or from range.',
+                sections: [
+                    {
+                        title: 'Start with difficulty',
+                        paragraphs: [
+                            'Riot rates each champion\'s difficulty from 1 to 10. To start, prefer champions rated 4 or lower: their kits are more direct, combos are simple and mistakes cost less. You can find this rating on each champion page at the Tavern.',
+                        ],
+                    },
+                    {
+                        title: 'Pick a style that suits you',
+                        paragraphs: [
+                            'Tanks and fighters forgive positioning mistakes because they take more damage. Marksmen and mages deal a lot of damage but must stay at a safe distance. Assassins are exciting but require knowing exactly when to dive in and get out.',
+                            'Ranged champions help you learn to keep your distance; melee champions teach you to pick the right moment to join the fight.',
+                        ],
+                    },
+                    {
+                        title: 'Learn one or two champions deeply',
+                        paragraphs: [
+                            'Instead of trying a different champion every game, play the same one several times. You learn ability ranges, cooldowns and what to do against each opponent, which is worth more than knowing many champions superficially.',
+                            'Read the tips for playing as and against the champion on their page. And to practice recognition, play the daily LoLdle challenges at the Tavern.',
                         ],
                     },
                 ],

@@ -3,6 +3,8 @@ import TIER_LIST from "./data/hs-tier-list.json";
 import { CHALLENGE_MODES } from "./lib/challenge";
 import { GUIDES } from "./lib/guides";
 import { getSetSummaries } from "./lib/hsServer";
+import { championPath } from "./lib/lol";
+import { getLolData } from "./lib/lolServer";
 import { getTypedPokemon } from "./lib/pokemonServer";
 import { allCombos, comboPath, hasSameTypes } from "./lib/typeCombos";
 import { localePath } from "./lib/localePath";
@@ -22,6 +24,10 @@ const PAGES: Entry[] = [
   ['/hearthstone/colecao', 'monthly', 0.5],
   ['/desafios', 'daily', 0.9],
   ...CHALLENGE_MODES.map((mode): Entry => [`/desafios/${mode}`, 'daily', 0.8]),
+  ['/lol', 'weekly', 0.9],
+  ['/lol/campeoes', 'weekly', 0.9],
+  ['/lol/itens', 'monthly', 0.7],
+  ['/lol/runas', 'monthly', 0.7],
   ['/guias', 'monthly', 0.8],
   ...GUIDES.map(({ slug }): Entry => [`/guias/${slug}`, 'monthly', 0.8]),
   ['/sobre', 'yearly', 0.5],
@@ -33,9 +39,10 @@ const PAGES: Entry[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  const [pokemon, sets] = await Promise.all([
+  const [pokemon, sets, lol] = await Promise.all([
     getTypedPokemon().catch(() => []),
     getSetSummaries().catch(() => []),
+    getLolData().then(({ champions }) => champions).catch(() => []),
   ])
   const combos = allCombos().filter((types) => pokemon.some((entry) => hasSameTypes(entry.types, types)))
   const entries: Entry[] = [
@@ -49,6 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...combos.map((types): Entry => [comboPath(types), 'monthly', 0.6]),
     ...pokemon.map(({ slug }): Entry => [`/pokemon/${slug}`, 'monthly', 0.7]),
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),
+    ...lol.map((champion): Entry => [championPath(champion), 'monthly', 0.7]),
   ]
   return entries.map(([path, changeFrequency, priority]) => ({
     url: absoluteUrl(path),

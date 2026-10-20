@@ -39,6 +39,11 @@ const nextConfig: NextConfig = {
         hostname: 'art.hearthstonejson.com',
         pathname: '/v1/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ddragon.leagueoflegends.com',
+        pathname: '/cdn/**',
+      },
     ],
   },
 };

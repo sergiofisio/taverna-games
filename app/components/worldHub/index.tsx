@@ -9,6 +9,7 @@ import { SITE_NAME } from "../../lib/site";
 import { XpBar } from "../progression";
 import Pokeball from "../pokeball";
 import HsEmblem from "../hsEmblem";
+import LolEmblem from "../lol/emblem";
 import AdSlot from "../ads/adSlot";
 import type { MessageKey } from "../../i18n/translations";
 
@@ -38,6 +39,14 @@ const PORTALS: Portal[] = [
         icon: <HsEmblem className="size-9" />,
         from: 40,
     },
+    {
+        href: '/lol',
+        title: 'hubLolPortalTitle',
+        text: 'hubLolText',
+        className: 'bg-linear-to-br from-[#0a3a4a] via-[#091428] to-[#010a13] border-[#c8aa6e]/50',
+        icon: <LolEmblem className="size-10" />,
+        from: 0,
+    },
 ]
 
 function PlayerLevel() {
@@ -59,7 +68,7 @@ export default function WorldHub({ children }: { children?: React.ReactNode }) {
                     <p className="mx-auto mt-3 max-w-2xl text-zinc-300">{t('hubSubtitle')}</p>
                 </motion.header>
 
-                <ul className="grid gap-6 md:grid-cols-2">
+                <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {PORTALS.map((portal, index) => (
                         <motion.li
                             key={portal.href}

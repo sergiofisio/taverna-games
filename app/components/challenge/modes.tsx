@@ -12,6 +12,9 @@ export const MODE_META: Record<ChallengeMode, { title: MessageKey; description: 
     'hs-atributos': { title: 'modeHsAtributos', description: 'modeHsAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-amber-600 to-amber-900' },
     'hs-arte': { title: 'modeHsArte', description: 'modeHsArteDesc', generation: 0, accent: 'bg-linear-to-br from-sky-700 to-indigo-950' },
     'hs-texto': { title: 'modeHsTexto', description: 'modeHsTextoDesc', generation: 0, accent: 'bg-linear-to-br from-emerald-700 to-stone-900' },
+    'lol-atributos': { title: 'modeLolAtributos', description: 'modeLolAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-[#0a3a4a] to-[#010a13]' },
+    'lol-splash': { title: 'modeLolSplash', description: 'modeLolSplashDesc', generation: 0, accent: 'bg-linear-to-br from-[#785a28] to-[#091428]' },
+    'lol-habilidade': { title: 'modeLolHabilidade', description: 'modeLolHabilidadeDesc', generation: 0, accent: 'bg-linear-to-br from-[#0397ab] to-[#091428]' },
 }
 
 export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode; className?: string }) {
@@ -83,6 +86,27 @@ export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode;
                 <svg {...common}>
                     <path d="M5 5c3-2 11-2 14 0v14c-3-2-11-2-14 0Z" fill="currentColor" fillOpacity="0.2" />
                     <path d="M8.5 9h7M8.5 12.5h7M8.5 16h4" />
+                </svg>
+            )
+        case 'lol-atributos':
+            return (
+                <svg {...common}>
+                    <path d="M12 3 20 7.5v9L12 21l-8-4.5v-9Z" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M8 10h8M8 14h5" />
+                </svg>
+            )
+        case 'lol-splash':
+            return (
+                <svg {...common}>
+                    <rect x="3" y="5" width="18" height="14" rx="2" fill="currentColor" fillOpacity="0.2" />
+                    <path d="m6 16 4-5 3 3 2-2 3 4" />
+                </svg>
+            )
+        case 'lol-habilidade':
+            return (
+                <svg {...common}>
+                    <rect x="5" y="5" width="14" height="14" rx="3" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M13 7 9 13h3l-1 4 4-6h-3Z" fill="currentColor" />
                 </svg>
             )
         case 'infinito':

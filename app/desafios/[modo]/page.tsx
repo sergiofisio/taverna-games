@@ -21,11 +21,15 @@ const HOW_TO: Record<ChallengeMode, MessageKey> = {
   'hs-atributos': 'howtoHsAtributos',
   'hs-arte': 'howtoHsArte',
   'hs-texto': 'howtoHsTexto',
+  'lol-atributos': 'howtoLolAtributos',
+  'lol-splash': 'howtoLolSplash',
+  'lol-habilidade': 'howtoLolHabilidade',
 };
 
 const modeTitle = (mode: ChallengeMode, language: Language = 'pt') => {
   const title = MESSAGES[language][MODE_META[mode].title]
   if (getModeWorld(mode) === 'pokemon') return `${title} · ${language === 'en' ? 'Pokémon challenge' : 'Desafio Pokémon'}`
+  if (getModeWorld(mode) === 'lol') return `${title} · LoLdle`
   return title.includes('Hearthdle') ? title : `${title} · Hearthdle`
 }
 

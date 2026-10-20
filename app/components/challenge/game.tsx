@@ -15,6 +15,7 @@ import ClassicSession from "./sessions/classic";
 import FusionSession from "./sessions/fusion";
 import GymSession from "./sessions/gym";
 import CardSession from "./sessions/card";
+import ChampionSession from "./sessions/champion";
 import DetailModal from "./detailModal";
 import type { SessionProps } from "./sessions/common";
 
@@ -23,6 +24,7 @@ export function ChallengeSession(props: SessionProps) {
     if (kind === 'fusion') return <FusionSession {...props} />
     if (kind === 'gym') return <GymSession {...props} />
     if (kind === 'card') return <CardSession {...props} />
+    if (kind === 'champion') return <ChampionSession {...props} />
     return <ClassicSession {...props} />
 }
 

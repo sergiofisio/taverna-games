@@ -1,6 +1,7 @@
 import { FUSION_COUNT, getFusion } from "./fusion";
 import { GYM_COUNT, buildGymRound } from "./gym";
 import { HS_POOL, HS_POOL_SIZE } from "./hearthstone";
+import { LOL_POOL, LOL_POOL_SIZE } from "./lol";
 import { hash } from "./seed";
 import type { World } from "./site";
 
@@ -8,15 +9,18 @@ export { seededFraction } from "./seed";
 
 export const POKEMON_MODES = ['silhueta', 'descricao', 'zoom', 'som', 'fusao', 'ginasio', 'infinito'] as const
 export const HEARTHSTONE_MODES = ['hs-atributos', 'hs-arte', 'hs-texto'] as const
-export const CHALLENGE_MODES = [...POKEMON_MODES, ...HEARTHSTONE_MODES] as const
+export const LOL_MODES = ['lol-atributos', 'lol-splash', 'lol-habilidade'] as const
+export const CHALLENGE_MODES = [...POKEMON_MODES, ...HEARTHSTONE_MODES, ...LOL_MODES] as const
 
 export type ChallengeMode = typeof CHALLENGE_MODES[number]
 export type GameWorld = Exclude<World, 'neutral'>
 
 export const getModeWorld = (mode: ChallengeMode): GameWorld =>
-    (HEARTHSTONE_MODES as readonly string[]).includes(mode) ? 'hearthstone' : 'pokemon'
+    (HEARTHSTONE_MODES as readonly string[]).includes(mode) ? 'hearthstone'
+        : (LOL_MODES as readonly string[]).includes(mode) ? 'lol' : 'pokemon'
 
-export const getWorldModes = (world: GameWorld): readonly ChallengeMode[] => world === 'hearthstone' ? HEARTHSTONE_MODES : POKEMON_MODES
+export const getWorldModes = (world: GameWorld): readonly ChallengeMode[] =>
+    world === 'hearthstone' ? HEARTHSTONE_MODES : world === 'lol' ? LOL_MODES : POKEMON_MODES
 export type ChallengeVariant = 'daily' | 'random'
 
 export const TOTAL_SPECIES = 1025
@@ -27,14 +31,15 @@ export const isChallengeMode = (value: string): value is ChallengeMode =>
 
 export const supportsDaily = (mode: ChallengeMode) => mode !== 'infinito'
 
-export type SessionKind = 'classic' | 'fusion' | 'gym' | 'infinite' | 'card'
+export type SessionKind = 'classic' | 'fusion' | 'gym' | 'infinite' | 'card' | 'champion'
 
 export const getSessionKind = (mode: ChallengeMode): SessionKind =>
     getModeWorld(mode) === 'hearthstone' ? 'card'
+        : getModeWorld(mode) === 'lol' ? 'champion'
         : mode === 'fusao' ? 'fusion' : mode === 'ginasio' ? 'gym' : mode === 'infinito' ? 'infinite' : 'classic'
 
-const POOL_SIZE: Record<SessionKind, number> = { classic: TOTAL_SPECIES, infinite: TOTAL_SPECIES, fusion: FUSION_COUNT, gym: GYM_COUNT, card: HS_POOL_SIZE }
-const POOL_OFFSET: Record<SessionKind, number> = { classic: 1, infinite: 1, fusion: 0, gym: 0, card: 0 }
+const POOL_SIZE: Record<SessionKind, number> = { classic: TOTAL_SPECIES, infinite: TOTAL_SPECIES, fusion: FUSION_COUNT, gym: GYM_COUNT, card: HS_POOL_SIZE, champion: LOL_POOL_SIZE }
+const POOL_OFFSET: Record<SessionKind, number> = { classic: 1, infinite: 1, fusion: 0, gym: 0, card: 0, champion: 0 }
 
 export function getSolution(mode: ChallengeMode, target: number): number[] {
     const kind = getSessionKind(mode)
@@ -44,6 +49,7 @@ export function getSolution(mode: ChallengeMode, target: number): number[] {
     }
     if (kind === 'gym') return [buildGymRound(target).intruder]
     if (kind === 'card') return [HS_POOL[target]]
+    if (kind === 'champion') return [LOL_POOL[target]]
     return [target]
 }
 
