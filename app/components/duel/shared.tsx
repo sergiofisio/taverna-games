@@ -15,6 +15,8 @@ import { HsCardImage } from "../hearthstone/cardImage";
 import { cardName } from "../../lib/hearthstone";
 import { championIcon, championName } from "../../lib/lol";
 import { useLolData } from "../lol/data";
+import { animeTitle } from "../../lib/anime";
+import { useAnimePool } from "../anime/data";
 
 export function DuelGate({ children }: { children: (userId: string, playerName: string) => ReactNode }) {
     const { t } = useLanguage()
@@ -111,7 +113,21 @@ export interface DuelViewProps {
 export function RoundAnswer({ mode, target }: { mode: ChallengeMode; target: number }) {
     if (getModeWorld(mode) === 'hearthstone') return <CardRoundAnswer dbfId={getSolution(mode, target)[0]} />
     if (getModeWorld(mode) === 'lol') return <ChampionRoundAnswer championKey={getSolution(mode, target)[0]} />
+    if (getModeWorld(mode) === 'anime') return <AnimeRoundAnswer animeId={getSolution(mode, target)[0]} />
     return <PokemonRoundAnswer mode={mode} target={target} />
+}
+
+function AnimeRoundAnswer({ animeId }: { animeId: number }) {
+    const { language } = useLanguage()
+    const state = useAnimePool()
+    const anime = state?.status === 'success' ? state.data.byId.get(animeId) : undefined
+    if (!anime) return null
+    return (
+        <span className="flex items-center justify-center gap-3 font-black">
+            <Image src={anime.img} alt="" width={36} height={52} unoptimized className="h-13 w-9 rounded object-cover" />
+            {animeTitle(anime, language)}
+        </span>
+    )
 }
 
 function ChampionRoundAnswer({ championKey }: { championKey: number }) {

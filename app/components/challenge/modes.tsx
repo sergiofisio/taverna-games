@@ -15,6 +15,9 @@ export const MODE_META: Record<ChallengeMode, { title: MessageKey; description: 
     'lol-atributos': { title: 'modeLolAtributos', description: 'modeLolAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-[#0a3a4a] to-[#010a13]' },
     'lol-splash': { title: 'modeLolSplash', description: 'modeLolSplashDesc', generation: 0, accent: 'bg-linear-to-br from-[#785a28] to-[#091428]' },
     'lol-habilidade': { title: 'modeLolHabilidade', description: 'modeLolHabilidadeDesc', generation: 0, accent: 'bg-linear-to-br from-[#0397ab] to-[#091428]' },
+    'anime-atributos': { title: 'modeAnimeAtributos', description: 'modeAnimeAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-fuchsia-600 to-purple-950' },
+    'anime-capa': { title: 'modeAnimeCapa', description: 'modeAnimeCapaDesc', generation: 0, accent: 'bg-linear-to-br from-pink-500 to-rose-900' },
+    'anime-personagem': { title: 'modeAnimePersonagem', description: 'modeAnimePersonagemDesc', generation: 0, accent: 'bg-linear-to-br from-violet-500 to-indigo-950' },
 }
 
 export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode; className?: string }) {
@@ -107,6 +110,27 @@ export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode;
                 <svg {...common}>
                     <rect x="5" y="5" width="14" height="14" rx="3" fill="currentColor" fillOpacity="0.2" />
                     <path d="M13 7 9 13h3l-1 4 4-6h-3Z" fill="currentColor" />
+                </svg>
+            )
+        case 'anime-atributos':
+            return (
+                <svg {...common}>
+                    <circle cx="12" cy="12" r="9" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M8 10h8M8 14h5" />
+                </svg>
+            )
+        case 'anime-capa':
+            return (
+                <svg {...common}>
+                    <rect x="6" y="3" width="12" height="18" rx="2" fill="currentColor" fillOpacity="0.2" />
+                    <path d="m8 17 3-4 2 2 3-3" />
+                </svg>
+            )
+        case 'anime-personagem':
+            return (
+                <svg {...common}>
+                    <circle cx="12" cy="9" r="4" fill="currentColor" fillOpacity="0.25" />
+                    <path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5" />
                 </svg>
             )
         case 'infinito':

@@ -2,7 +2,7 @@ import type { Language } from "../i18n/translations";
 
 export type GuideSection = { title: string; paragraphs: string[] }
 export type GuideContent = { title: string; description: string; intro: string; sections: GuideSection[] }
-export type GuideWorld = 'pokemon' | 'hearthstone' | 'lol'
+export type GuideWorld = 'pokemon' | 'hearthstone' | 'lol' | 'anime'
 
 export interface Guide {
     slug: string

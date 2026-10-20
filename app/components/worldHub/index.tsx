@@ -10,6 +10,7 @@ import { XpBar } from "../progression";
 import Pokeball from "../pokeball";
 import HsEmblem from "../hsEmblem";
 import LolEmblem from "../lol/emblem";
+import AnimeEmblem from "../anime/emblem";
 import AdSlot from "../ads/adSlot";
 import type { MessageKey } from "../../i18n/translations";
 
@@ -47,6 +48,14 @@ const PORTALS: Portal[] = [
         icon: <LolEmblem className="size-10" />,
         from: 0,
     },
+    {
+        href: '/animes',
+        title: 'hubAnimePortalTitle',
+        text: 'hubAnimeText',
+        className: 'bg-linear-to-br from-fuchsia-600 via-purple-800 to-indigo-950 border-pink-300/40',
+        icon: <AnimeEmblem className="size-10" />,
+        from: 0,
+    },
 ]
 
 function PlayerLevel() {
@@ -68,7 +77,7 @@ export default function WorldHub({ children }: { children?: React.ReactNode }) {
                     <p className="mx-auto mt-3 max-w-2xl text-zinc-300">{t('hubSubtitle')}</p>
                 </motion.header>
 
-                <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <ul className="grid gap-6 md:grid-cols-2">
                     {PORTALS.map((portal, index) => (
                         <motion.li
                             key={portal.href}

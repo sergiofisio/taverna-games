@@ -5,6 +5,8 @@ import { GUIDES } from "./lib/guides";
 import { getSetSummaries } from "./lib/hsServer";
 import { championPath } from "./lib/lol";
 import { getLolData } from "./lib/lolServer";
+import { ANIME_GENRES, animePath, genreSlug } from "./lib/anime";
+import { getAnimePool } from "./lib/animeServer";
 import { getTypedPokemon } from "./lib/pokemonServer";
 import { allCombos, comboPath, hasSameTypes } from "./lib/typeCombos";
 import { localePath } from "./lib/localePath";
@@ -28,6 +30,10 @@ const PAGES: Entry[] = [
   ['/lol/campeoes', 'weekly', 0.9],
   ['/lol/itens', 'monthly', 0.7],
   ['/lol/runas', 'monthly', 0.7],
+  ['/animes', 'daily', 0.9],
+  ['/animes/populares', 'weekly', 0.8],
+  ['/animes/temporada', 'daily', 0.8],
+  ...Object.keys(ANIME_GENRES).map((genre): Entry => [`/animes/generos/${genreSlug(genre)}`, 'weekly', 0.6]),
   ['/guias', 'monthly', 0.8],
   ...GUIDES.map(({ slug }): Entry => [`/guias/${slug}`, 'monthly', 0.8]),
   ['/sobre', 'yearly', 0.5],
@@ -39,10 +45,11 @@ const PAGES: Entry[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  const [pokemon, sets, lol] = await Promise.all([
+  const [pokemon, sets, lol, anime] = await Promise.all([
     getTypedPokemon().catch(() => []),
     getSetSummaries().catch(() => []),
     getLolData().then(({ champions }) => champions).catch(() => []),
+    getAnimePool().catch(() => []),
   ])
   const combos = allCombos().filter((types) => pokemon.some((entry) => hasSameTypes(entry.types, types)))
   const entries: Entry[] = [
@@ -57,6 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pokemon.map(({ slug }): Entry => [`/pokemon/${slug}`, 'monthly', 0.7]),
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),
     ...lol.map((champion): Entry => [championPath(champion), 'monthly', 0.7]),
+    ...anime.map((entry): Entry => [animePath(entry), 'monthly', 0.6]),
   ]
   return entries.map(([path, changeFrequency, priority]) => ({
     url: absoluteUrl(path),

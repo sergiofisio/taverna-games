@@ -14,9 +14,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   if (!guide) return ogCard({ title: 'Guias' });
   const { title, description } = guide.content.pt;
   return ogCard({
-    eyebrow: guide.world === 'pokemon' ? 'Guia · Pokémon' : guide.world === 'lol' ? 'Guia · League of Legends' : 'Guia · Hearthstone',
+    eyebrow: guide.world === 'pokemon' ? 'Guia · Pokémon' : guide.world === 'lol' ? 'Guia · League of Legends' : guide.world === 'anime' ? 'Guia · Animes' : 'Guia · Hearthstone',
     title,
     subtitle: description.length > 140 ? `${description.slice(0, 137)}…` : description,
-    accent: guide.world === 'pokemon' ? '#dc2626' : guide.world === 'lol' ? '#0a3a4a' : '#b45309',
+    accent: guide.world === 'pokemon' ? '#dc2626' : guide.world === 'lol' ? '#0a3a4a' : guide.world === 'anime' ? '#a21caf' : '#b45309',
   });
 }

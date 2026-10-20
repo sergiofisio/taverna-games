@@ -43,7 +43,7 @@ export default function ResultPanel({ mode, status, answer, attempts, stats, rew
     const maxBucket = Math.max(1, ...stats.distribution)
     const [nextMode] = useState(() => getNextMode(mode, getDateKey()))
     const world = getModeWorld(mode)
-    const viewLabel = t(world === 'hearthstone' ? 'viewCard' : world === 'lol' ? 'viewChampion' : 'viewInPokedex')
+    const viewLabel = t(world === 'hearthstone' ? 'viewCard' : world === 'lol' ? 'viewChampion' : world === 'anime' ? 'viewAnime' : 'viewInPokedex')
 
     const summary = [
         { label: t('statsWins'), value: stats.wins },
@@ -140,7 +140,7 @@ export default function ResultPanel({ mode, status, answer, attempts, stats, rew
                         whileTap={{ scale: 0.95 }}
                         className="rounded-xl bg-red-600 px-4 py-2 font-bold text-white"
                     >
-                        {t(world === 'hearthstone' ? 'newCard' : world === 'lol' ? 'newChampion' : 'newPokemon')}
+                        {t(world === 'hearthstone' ? 'newCard' : world === 'lol' ? 'newChampion' : world === 'anime' ? 'newAnime' : 'newPokemon')}
                     </motion.button>
                 ) : (
                     <Countdown onNewDay={onNewDay} />
