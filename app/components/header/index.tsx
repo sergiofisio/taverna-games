@@ -15,6 +15,7 @@ const WORLD_STYLES: Record<World, string> = {
   lol: 'border-[#785a28] bg-linear-to-r from-[#010a13] via-[#0a3a4a] to-[#010a13]',
   anime: 'border-pink-900 bg-linear-to-r from-fuchsia-800 via-purple-800 to-pink-700',
   tcg: 'border-sky-900 bg-linear-to-r from-sky-700 via-indigo-700 to-sky-600',
+  ygo: 'border-amber-900 bg-linear-to-r from-violet-950 via-purple-900 to-amber-700',
   neutral: 'border-zinc-950 bg-linear-to-r from-red-700 via-zinc-900 to-amber-800',
 }
 

@@ -19,6 +19,8 @@ import { animeTitle } from "../../lib/anime";
 import { useAnimePool } from "../anime/data";
 import { TCGP_POOL, tcgpName } from "../../lib/tcgp";
 import { TcgpCardImage, useTcgpData } from "../tcgp/shared";
+import { YGO_POOL, ygoName } from "../../lib/ygo";
+import { YgoCardImage, useYgoPool } from "../ygo/shared";
 
 export function DuelGate({ children }: { children: (userId: string, playerName: string) => ReactNode }) {
     const { t } = useLanguage()
@@ -117,7 +119,21 @@ export function RoundAnswer({ mode, target }: { mode: ChallengeMode; target: num
     if (getModeWorld(mode) === 'lol') return <ChampionRoundAnswer championKey={getSolution(mode, target)[0]} />
     if (getModeWorld(mode) === 'anime') return <AnimeRoundAnswer animeId={getSolution(mode, target)[0]} />
     if (getModeWorld(mode) === 'tcg') return <TcgpRoundAnswer index={getSolution(mode, target)[0]} />
+    if (getModeWorld(mode) === 'ygo') return <YgoRoundAnswer index={getSolution(mode, target)[0]} />
     return <PokemonRoundAnswer mode={mode} target={target} />
+}
+
+function YgoRoundAnswer({ index }: { index: number }) {
+    const { language } = useLanguage()
+    const state = useYgoPool()
+    const card = state?.status === 'success' ? state.data.byId.get(YGO_POOL[index]) : undefined
+    if (!card) return null
+    return (
+        <span className="flex items-center justify-center gap-3 font-black">
+            <span className="w-12"><YgoCardImage card={card} /></span>
+            {ygoName(card, language)}
+        </span>
+    )
 }
 
 function TcgpRoundAnswer({ index }: { index: number }) {

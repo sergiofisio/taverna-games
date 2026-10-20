@@ -18,6 +18,7 @@ import CardSession from "./sessions/card";
 import ChampionSession from "./sessions/champion";
 import AnimeSession from "./sessions/anime";
 import TcgpSession from "./sessions/tcgp";
+import YgoSession from "./sessions/ygo";
 import DetailModal from "./detailModal";
 import type { SessionProps } from "./sessions/common";
 
@@ -29,6 +30,7 @@ export function ChallengeSession(props: SessionProps) {
     if (kind === 'champion') return <ChampionSession {...props} />
     if (kind === 'anime') return <AnimeSession {...props} />
     if (kind === 'tcgp') return <TcgpSession {...props} />
+    if (kind === 'ygo') return <YgoSession {...props} />
     return <ClassicSession {...props} />
 }
 

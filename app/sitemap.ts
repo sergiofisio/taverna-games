@@ -9,6 +9,8 @@ import { ANIME_GENRES, animePath, genreSlug } from "./lib/anime";
 import { getAnimePool } from "./lib/animeServer";
 import { tcgpSetPath } from "./lib/tcgp";
 import { getTcgpData } from "./lib/tcgpServer";
+import { ygoSetPath } from "./lib/ygo";
+import { INDEXED_ARCHETYPE_SIZE, getYgoArchetypes, getYgoBoosterSets } from "./lib/ygoServer";
 import { getTypedPokemon } from "./lib/pokemonServer";
 import { allCombos, comboPath, hasSameTypes } from "./lib/typeCombos";
 import { localePath } from "./lib/localePath";
@@ -41,6 +43,13 @@ const PAGES: Entry[] = [
   ['/tcg-pocket/colecoes', 'monthly', 0.8],
   ['/tcg-pocket/pacotes', 'monthly', 0.7],
   ['/tcg-pocket/decks', 'monthly', 0.7],
+  ['/yu-gi-oh', 'weekly', 0.9],
+  ['/yu-gi-oh/cartas', 'weekly', 0.8],
+  ['/yu-gi-oh/arquetipos', 'monthly', 0.8],
+  ['/yu-gi-oh/banlist', 'weekly', 0.8],
+  ['/yu-gi-oh/colecoes', 'monthly', 0.7],
+  ['/yu-gi-oh/pacotes', 'monthly', 0.7],
+  ['/yu-gi-oh/decks', 'monthly', 0.7],
   ['/guias', 'monthly', 0.8],
   ...GUIDES.map(({ slug }): Entry => [`/guias/${slug}`, 'monthly', 0.8]),
   ['/sobre', 'yearly', 0.5],
@@ -52,12 +61,14 @@ const PAGES: Entry[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  const [pokemon, sets, lol, anime, tcgp] = await Promise.all([
+  const [pokemon, sets, lol, anime, tcgp, ygoArchetypes, ygoSets] = await Promise.all([
     getTypedPokemon().catch(() => []),
     getSetSummaries().catch(() => []),
     getLolData().then(({ champions }) => champions).catch(() => []),
     getAnimePool().catch(() => []),
     getTcgpData().then(({ sets: tcgpSets }) => tcgpSets).catch(() => []),
+    getYgoArchetypes().then((list) => list.filter((entry) => entry.cards.length >= INDEXED_ARCHETYPE_SIZE)).catch(() => []),
+    getYgoBoosterSets().catch(() => []),
   ])
   const combos = allCombos().filter((types) => pokemon.some((entry) => hasSameTypes(entry.types, types)))
   const entries: Entry[] = [
@@ -74,6 +85,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...lol.map((champion): Entry => [championPath(champion), 'monthly', 0.7]),
     ...anime.map((entry): Entry => [animePath(entry), 'monthly', 0.6]),
     ...tcgp.map((set): Entry => [tcgpSetPath(set), 'monthly', 0.7]),
+    ...ygoArchetypes.map((entry): Entry => [`/yu-gi-oh/arquetipos/${entry.slug}`, 'monthly', 0.6]),
+    ...ygoSets.map((set): Entry => [ygoSetPath(set), 'monthly', 0.6]),
   ]
   return entries.map(([path, changeFrequency, priority]) => ({
     url: absoluteUrl(path),

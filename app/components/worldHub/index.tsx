@@ -12,6 +12,7 @@ import HsEmblem from "../hsEmblem";
 import LolEmblem from "../lol/emblem";
 import AnimeEmblem from "../anime/emblem";
 import { PocketEmblem } from "../tcgp/shared";
+import { YgoEmblem } from "../ygo/shared";
 import AdSlot from "../ads/adSlot";
 import type { MessageKey } from "../../i18n/translations";
 
@@ -63,6 +64,14 @@ const PORTALS: Portal[] = [
         text: 'hubTcgText',
         className: 'bg-linear-to-br from-sky-500 via-sky-700 to-indigo-900 border-sky-200/40',
         icon: <PocketEmblem className="size-10" />,
+        from: 0,
+    },
+    {
+        href: '/yu-gi-oh',
+        title: 'hubYgoPortalTitle',
+        text: 'hubYgoText',
+        className: 'bg-linear-to-br from-violet-800 via-purple-950 to-amber-700 border-amber-300/40',
+        icon: <YgoEmblem className="size-10" />,
         from: 0,
     },
 ]

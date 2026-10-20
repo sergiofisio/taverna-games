@@ -9,10 +9,19 @@ import Tavern from "../hearthstone/tavern";
 import Rift from "../lol/rift";
 import Sakura from "../anime/sakura";
 import { PocketBackdrop } from "../tcgp/shared";
+import { DuelBackdrop } from "../ygo/shared";
 
 export default function ChallengeBackdrop({ generation, world = 'pokemon', children }: { generation: number; world?: GameWorld; children: ReactNode }) {
     const { t } = useLanguage()
     const region = GENERATIONS.find(({ id }) => id === generation) ?? GENERATIONS[0]
+
+    if (world === 'ygo') {
+        return (
+            <DuelBackdrop>
+                <section className="flex min-w-0 flex-1 flex-col">{children}</section>
+            </DuelBackdrop>
+        )
+    }
 
     if (world === 'tcg') {
         return (

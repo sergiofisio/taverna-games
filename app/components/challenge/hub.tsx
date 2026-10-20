@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { useLanguage } from "../../context/languageContext";
 import { useAuth } from "../../context/authContext";
 import { useIsClient } from "../../hooks/useIsClient";
-import { ANIME_MODES, HEARTHSTONE_MODES, LOL_MODES, POKEMON_MODES, TCG_MODES, getCurrentStreak, getDateKey, isSolvedToday, supportsDaily, type ChallengeMode, type GameWorld } from "../../lib/challenge";
+import { ANIME_MODES, HEARTHSTONE_MODES, LOL_MODES, POKEMON_MODES, TCG_MODES, YGO_MODES, getCurrentStreak, getDateKey, isSolvedToday, supportsDaily, type ChallengeMode, type GameWorld } from "../../lib/challenge";
 import type { MessageKey } from "../../i18n/translations";
 import Pokeball from "../pokeball";
 import HsEmblem from "../hsEmblem";
@@ -16,6 +16,7 @@ import { BadgeIcon, XpBar, badgeDescription, badgeTitle } from "../progression";
 import LolEmblem from "../lol/emblem";
 import AnimeEmblem from "../anime/emblem";
 import { PocketEmblem } from "../tcgp/shared";
+import { YgoEmblem } from "../ygo/shared";
 
 const WORLD_SECTIONS: { world: GameWorld; title: MessageKey; modes: readonly ChallengeMode[] }[] = [
     { world: 'pokemon', title: 'hubPokemonTitle', modes: POKEMON_MODES },
@@ -23,6 +24,7 @@ const WORLD_SECTIONS: { world: GameWorld; title: MessageKey; modes: readonly Cha
     { world: 'lol', title: 'hubLolTitle', modes: LOL_MODES },
     { world: 'anime', title: 'hubAnimeTitle', modes: ANIME_MODES },
     { world: 'tcg', title: 'hubTcgTitle', modes: TCG_MODES },
+    { world: 'ygo', title: 'hubYgoTitle', modes: YGO_MODES },
 ]
 
 function ModeCard({ mode, badge, delay }: { mode: ChallengeMode; badge: string | null; delay: number }) {
@@ -143,7 +145,7 @@ export default function ChallengeHub({ children }: { children?: React.ReactNode 
                 {WORLD_SECTIONS.map(({ world, title, modes }, sectionIndex) => (
                     <section key={world} className="mt-8">
                         <h3 className="mb-3 flex items-center gap-2 text-2xl font-black text-white [text-shadow:0_2px_6px_rgb(0_0_0/0.6)]">
-                            {world === 'pokemon' ? <Pokeball /> : world === 'lol' ? <LolEmblem /> : world === 'anime' ? <AnimeEmblem /> : world === 'tcg' ? <PocketEmblem /> : <HsEmblem className="size-9" />}
+                            {world === 'pokemon' ? <Pokeball /> : world === 'lol' ? <LolEmblem /> : world === 'anime' ? <AnimeEmblem /> : world === 'tcg' ? <PocketEmblem /> : world === 'ygo' ? <YgoEmblem /> : <HsEmblem className="size-9" />}
                             {t(title)}
                         </h3>
                         <ul className="grid gap-5 sm:grid-cols-2">

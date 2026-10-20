@@ -20,6 +20,9 @@ export const MODE_META: Record<ChallengeMode, { title: MessageKey; description: 
     'anime-personagem': { title: 'modeAnimePersonagem', description: 'modeAnimePersonagemDesc', generation: 0, accent: 'bg-linear-to-br from-violet-500 to-indigo-950' },
     'tcg-atributos': { title: 'modeTcgAtributos', description: 'modeTcgAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-sky-500 to-indigo-800' },
     'tcg-arte': { title: 'modeTcgArte', description: 'modeTcgArteDesc', generation: 0, accent: 'bg-linear-to-br from-cyan-500 to-sky-900' },
+    'ygo-atributos': { title: 'modeYgoAtributos', description: 'modeYgoAtributosDesc', generation: 0, accent: 'bg-linear-to-br from-violet-700 to-amber-700' },
+    'ygo-arte': { title: 'modeYgoArte', description: 'modeYgoArteDesc', generation: 0, accent: 'bg-linear-to-br from-amber-500 to-purple-950' },
+    'ygo-efeito': { title: 'modeYgoEfeito', description: 'modeYgoEfeitoDesc', generation: 0, accent: 'bg-linear-to-br from-purple-800 to-zinc-950' },
 }
 
 export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode; className?: string }) {
@@ -147,6 +150,27 @@ export function ModeIcon({ mode, className = 'size-10' }: { mode: ChallengeMode;
                 <svg {...common}>
                     <rect x="6" y="3" width="12" height="18" rx="2" fill="currentColor" fillOpacity="0.2" />
                     <circle cx="12" cy="10" r="3" />
+                </svg>
+            )
+        case 'ygo-atributos':
+            return (
+                <svg {...common}>
+                    <path d="M4 5h16l-8 15Z" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M9 9h6" />
+                </svg>
+            )
+        case 'ygo-arte':
+            return (
+                <svg {...common}>
+                    <path d="M4 5h16l-8 15Z" fill="currentColor" fillOpacity="0.2" />
+                    <circle cx="12" cy="10" r="2.2" />
+                </svg>
+            )
+        case 'ygo-efeito':
+            return (
+                <svg {...common}>
+                    <rect x="6" y="3" width="12" height="18" rx="2" fill="currentColor" fillOpacity="0.2" />
+                    <path d="M9 13h6M9 16h6M9 10h3" />
                 </svg>
             )
         case 'infinito':
