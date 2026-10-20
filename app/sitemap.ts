@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import TIER_LIST from "./data/hs-tier-list.json";
 import { CHALLENGE_MODES } from "./lib/challenge";
 import { GUIDES } from "./lib/guides";
 import { getSetSummaries } from "./lib/hsServer";
@@ -38,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const combos = allCombos().filter((types) => pokemon.some((entry) => hasSameTypes(entry.types, types)))
   const entries: Entry[] = [
     ...PAGES,
+    ...(TIER_LIST.updated ? [['/hearthstone/tier-list', 'weekly', 0.8] as Entry] : []),
     ['/pokemon/tipos', 'monthly', 0.8],
     ['/pokemon/time', 'monthly', 0.8],
     ['/pokemon/comparar', 'monthly', 0.7],
