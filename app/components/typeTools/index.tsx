@@ -23,7 +23,12 @@ const LABELS = {
         matrix: 'Todas as combinações de tipos', matrixHint: 'O número em cada casa é a quantidade de Pokémon com aquela combinação.',
         breadcrumb: 'Tipos', chart: 'Tabela de tipos completa', calculator: 'Calculadora de fraquezas', partial: 'Pokémon que têm {type} como um dos tipos: {n}',
         title1: 'Tipo {name}: fraquezas, resistências e Pokémon', title2: 'Tipos {name}: fraquezas, resistências e Pokémon',
-        related: 'Combinações com {type}',
+        related: 'Combinações com {type}', howTo: 'Como a calculadora funciona',
+        howToText: [
+            'Cada tipo de golpe tem um multiplicador contra cada tipo de Pokémon. Quando o Pokémon tem dois tipos, os multiplicadores se multiplicam: duas fraquezas viram 4×, duas resistências viram ¼× e uma fraqueza com uma resistência se anulam em 1×.',
+            'A calculadora faz essa conta para os 18 tipos de golpe e separa o resultado por faixa de dano. Na parte de ataque, ela mostra contra quais tipos os golpes de cada tipo selecionado são super efetivos, já contando o bônus de mesmo tipo (STAB).',
+            'A tabela de combinações abaixo mostra quantos Pokémon existem em cada par de tipos. Clique em qualquer casa para abrir a página da combinação, com a lista completa dos Pokémon e dicas para enfrentá-los.',
+        ],
     },
     en: {
         title: 'Pokémon weakness calculator',
@@ -34,9 +39,14 @@ const LABELS = {
         matrix: 'Every type combination', matrixHint: 'The number in each cell is how many Pokémon have that combination.',
         breadcrumb: 'Types', chart: 'Full type chart', calculator: 'Weakness calculator', partial: 'Pokémon with {type} as one of their types: {n}',
         title1: '{name} type: weaknesses, resistances and Pokémon', title2: '{name} types: weaknesses, resistances and Pokémon',
-        related: 'Combinations with {type}',
+        related: 'Combinations with {type}', howTo: 'How the calculator works',
+        howToText: [
+            'Each move type has a multiplier against each Pokémon type. When a Pokémon has two types, the multipliers stack: two weaknesses become 4×, two resistances become ¼× and a weakness plus a resistance cancel out to 1×.',
+            'The calculator does that math for all 18 move types and groups the result by damage band. On offense, it shows which types each selected type hits super effectively, already counting the same-type bonus (STAB).',
+            'The combination table below shows how many Pokémon exist for each type pair. Click any cell to open that combination’s page, with the full Pokémon list and tips to beat them.',
+        ],
     },
-} satisfies Record<Language, Record<string, string>>
+} satisfies Record<Language, Record<string, string | string[]>>
 
 function TypeBadge({ type, language, href }: { type: string; language: Language; href?: string }) {
     const colors = TYPE_COLORS[type] ?? TYPE_COLORS.normal
@@ -199,6 +209,10 @@ export function TypeCalculator({ pokemon }: { pokemon: TypedPokemon[] }) {
                         </tbody>
                     </table>
                 </div>
+            </Panel>
+
+            <Panel title={L.howTo}>
+                {L.howToText.map((paragraph) => <p key={paragraph} className="leading-relaxed text-zinc-700 dark:text-zinc-300">{paragraph}</p>)}
             </Panel>
         </article>
     )

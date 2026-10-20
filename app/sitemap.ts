@@ -37,6 +37,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: Entry[] = [
     ...PAGES,
     ['/pokemon/tipos', 'monthly', 0.8],
+    ['/pokemon/time', 'monthly', 0.8],
+    ['/pokemon/comparar', 'monthly', 0.7],
     ...combos.map((types): Entry => [comboPath(types), 'monthly', 0.6]),
     ...pokemon.map(({ slug }): Entry => [`/pokemon/${slug}`, 'monthly', 0.7]),
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),

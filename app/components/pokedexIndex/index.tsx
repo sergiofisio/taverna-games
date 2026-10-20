@@ -8,8 +8,8 @@ import { REGIONS } from "../../lib/pokemonText";
 import { prettify } from "../../i18n/translations";
 
 const LABELS = {
-    pt: { title: 'Todos os Pokémon', text: 'Abra a página de cada Pokémon para ver tipos, fraquezas, atributos, evoluções e dicas de batalha.', count: '{n} Pokémon', calculator: 'Calculadora de fraquezas por tipo' },
-    en: { title: 'Every Pokémon', text: 'Open each Pokémon’s page to see its types, weaknesses, stats, evolutions and battle tips.', count: '{n} Pokémon', calculator: 'Type weakness calculator' },
+    pt: { title: 'Todos os Pokémon', text: 'Abra a página de cada Pokémon para ver tipos, fraquezas, atributos, evoluções e dicas de batalha.', count: '{n} Pokémon', calculator: 'Calculadora de fraquezas', team: 'Montador de time', compare: 'Comparador de Pokémon' },
+    en: { title: 'Every Pokémon', text: 'Open each Pokémon’s page to see its types, weaknesses, stats, evolutions and battle tips.', count: '{n} Pokémon', calculator: 'Weakness calculator', team: 'Team builder', compare: 'Pokémon comparison' },
 }
 
 export default function PokedexIndex({ list }: { list: PokemonListItem[] }) {
@@ -25,7 +25,11 @@ export default function PokedexIndex({ list }: { list: PokemonListItem[] }) {
         <section aria-labelledby="pokedex-index-title" className="flex flex-col gap-3 rounded-3xl bg-white/90 p-6 shadow-lg dark:bg-zinc-900/90">
             <h2 id="pokedex-index-title" className="text-xl font-black">{L.title}</h2>
             <p className="text-zinc-700 dark:text-zinc-300">{L.text}</p>
-            <Link href="/pokemon/tipos" className="w-fit rounded-full bg-red-600 px-4 py-2 text-sm font-black text-white hover:bg-red-700">{L.calculator} →</Link>
+            <div className="flex flex-wrap gap-2">
+                {([['/pokemon/tipos', L.calculator], ['/pokemon/time', L.team], ['/pokemon/comparar', L.compare]] as const).map(([href, label]) => (
+                    <Link key={href} href={href} className="rounded-full bg-red-600 px-4 py-2 text-sm font-black text-white hover:bg-red-700">{label} →</Link>
+                ))}
+            </div>
             {generations.map((generation) => (
                 <details key={generation.id} className="group rounded-2xl bg-zinc-100 dark:bg-zinc-800">
                     <summary className="cursor-pointer list-none px-4 py-3 font-black marker:hidden">
