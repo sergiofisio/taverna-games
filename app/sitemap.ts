@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CHALLENGE_MODES } from "./lib/challenge";
 import { GUIDES } from "./lib/guides";
-import { getCardSlugs, getSetSummaries } from "./lib/hsServer";
+import { getSetSummaries } from "./lib/hsServer";
 import { getPokemonList } from "./lib/pokemonServer";
 import { absoluteUrl } from "./lib/seo";
 
@@ -28,16 +28,14 @@ const PAGES: Entry[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date()
-  const [pokemon, cards, sets] = await Promise.all([
+  const [pokemon, sets] = await Promise.all([
     getPokemonList().catch(() => []),
-    getCardSlugs().catch(() => []),
     getSetSummaries().catch(() => []),
   ])
   const entries: Entry[] = [
     ...PAGES,
     ...pokemon.map(({ slug }): Entry => [`/pokemon/${slug}`, 'monthly', 0.7]),
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),
-    ...cards.map((slug): Entry => [`/hearthstone/cartas/${slug}`, 'monthly', 0.5]),
   ]
   return entries.map(([path, changeFrequency, priority]) => ({ url: absoluteUrl(path), lastModified, changeFrequency, priority }))
 }

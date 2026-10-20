@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Guias",
-  description: "Guias de Pokémon e Hearthstone: tabela de tipos, como reconhecer Pokémon nos desafios, como gastar Pó Arcano e como montar um deck.",
+  description: "Guias de Pokémon e Hearthstone: tabela de tipos, atributos base, evoluções, gerações, classes, formatos, glossário, Pó Arcano e como montar um deck.",
   path: "/guias",
 });
 

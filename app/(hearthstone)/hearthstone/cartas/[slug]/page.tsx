@@ -28,7 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/hearthstone/cartas/${lookup.data.slug}`,
   });
   const image = { url: cardRender(card, 'pt', 512), width: 512, height: 776, alt: card.name[0] };
-  return { ...metadata, openGraph: { ...metadata.openGraph, images: [image] }, twitter: { ...metadata.twitter, card: 'summary', images: [image.url] } };
+  return {
+    ...metadata,
+    robots: { index: false, follow: true },
+    openGraph: { ...metadata.openGraph, images: [image] },
+    twitter: { ...metadata.twitter, card: 'summary', images: [image.url] },
+  };
 }
 
 export default async function HearthstoneCardPage({ params }: Props) {

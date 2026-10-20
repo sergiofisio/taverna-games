@@ -18,6 +18,7 @@ const LABELS = {
         craft: 'Criar', disenchant: 'Desencantar', dust: '{n} de pó', notCraftable: 'Não pode ser criada', artist: 'Artista',
         set: 'Coleção', viewSet: 'Ver todas as cartas da coleção', build: 'Montar um deck', buildText: 'Use o montador de decks para testar esta carta com o resto da coleção.',
         standard: 'Padrão', wild: 'Livre', usage: 'Como usar',
+        glossary: 'Glossário de palavras-chave', formatGuide: 'Padrão ou Livre: entenda a rotação',
     },
     en: {
         library: 'Cards', about: 'About this card', cardText: 'Card text', noText: 'This card has no text.',
@@ -26,6 +27,7 @@ const LABELS = {
         craft: 'Craft', disenchant: 'Disenchant', dust: '{n} dust', notCraftable: 'Can’t be crafted', artist: 'Artist',
         set: 'Set', viewSet: 'See every card in the set', build: 'Build a deck', buildText: 'Use the deck builder to try this card with the rest of the set.',
         standard: 'Standard', wild: 'Wild', usage: 'How to use it',
+        glossary: 'Keyword glossary', formatGuide: 'Standard or Wild: how rotation works',
     },
 } satisfies Record<Language, Record<string, string>>
 
@@ -144,14 +146,22 @@ export default function HsCardProfile({ page }: { page: CardPageData }) {
                             </div>
                         ))}
                     </dl>
+                    <Link href="/guias/glossario-hearthstone" className="self-start font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">
+                        {L.glossary} →
+                    </Link>
                 </Section>
             )}
 
             <Section title={L.format}>
                 <p>{description.format}</p>
-                <Link href={`/hearthstone/colecoes/${setSlug(set)}`} className="self-start font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">
-                    {L.viewSet} →
-                </Link>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                    <Link href={`/hearthstone/colecoes/${setSlug(set)}`} className="font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">
+                        {L.viewSet} →
+                    </Link>
+                    <Link href="/guias/padrao-e-livre-hearthstone" className="font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">
+                        {L.formatGuide} →
+                    </Link>
+                </div>
             </Section>
 
             <Section title={L.collection}>

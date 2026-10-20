@@ -4,6 +4,7 @@ import GuideArticle from "../../components/guideArticle";
 import JsonLd from "../../components/jsonLd";
 import AdScript from "../../components/ads/adScript";
 import TypeChartTable from "../../components/typeChartTable";
+import HsGlossary from "../../components/hsGlossary";
 import { GUIDES, getGuide } from "../../lib/guides";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "../../lib/seo";
 import { SITE_NAME } from "../../lib/site";
@@ -35,6 +36,7 @@ export default async function GuidePage({ params }: Props) {
       <AdScript />
       <GuideArticle content={guide.content} updated={guide.updated}>
         {guide.slug === 'tabela-de-tipos' && <TypeChartTable />}
+        {guide.slug === 'glossario-hearthstone' && <HsGlossary />}
       </GuideArticle>
       <JsonLd data={breadcrumbJsonLd([['Guias', '/guias'], [title, path]])} />
       <JsonLd

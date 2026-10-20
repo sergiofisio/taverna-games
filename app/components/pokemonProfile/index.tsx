@@ -34,6 +34,7 @@ const LABELS = {
         hatch: 'Ciclos de ovo', moves: 'Golpes que aprende', forms: 'Outras formas', previous: 'Anterior', next: 'Próximo',
         play: 'Teste o que você sabe', playText: 'Reconheça este e outros Pokémon pela silhueta, pelo grito ou pela descrição nos desafios diários.',
         playButton: 'Jogar desafios', typeChart: 'Ver a tabela de tipos completa', none: 'Nenhuma', team: 'Dicas para a equipe',
+        statsGuide: 'Entenda os atributos base', evolutionGuide: 'Todos os métodos de evolução',
     },
     en: {
         back: 'Pokédex', about: 'About', stats: 'Base stats', total: 'Total', matchups: 'Weaknesses and resistances',
@@ -44,6 +45,7 @@ const LABELS = {
         hatch: 'Egg cycles', moves: 'Learnable moves', forms: 'Other forms', previous: 'Previous', next: 'Next',
         play: 'Test your knowledge', playText: 'Recognize this and other Pokémon by silhouette, cry or description in the daily challenges.',
         playButton: 'Play challenges', typeChart: 'See the full type chart', none: 'None', team: 'Team tips',
+        statsGuide: 'Understand base stats', evolutionGuide: 'Every evolution method',
     },
 } satisfies Record<Language, Record<string, string>>
 
@@ -154,6 +156,7 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
                             <dd className="text-right font-mono font-black">{statTotal(profile)}</dd>
                         </div>
                     </dl>
+                    <Link href="/guias/atributos-base-pokemon" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.statsGuide} →</Link>
                 </Section>
 
                 <Section title={L.matchups} delay={0.05}>
@@ -204,6 +207,7 @@ export default function PokemonProfileView({ profile }: { profile: PokemonProfil
                         ))}
                     </ol>
                 )}
+                <Link href="/guias/metodos-de-evolucao-pokemon" className="w-fit text-sm font-bold text-red-600 underline-offset-2 hover:underline dark:text-red-400">{L.evolutionGuide} →</Link>
             </Section>
 
             <Section title={L.training}>

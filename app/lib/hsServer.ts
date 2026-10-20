@@ -64,11 +64,6 @@ export const toCardLink = (card: HsCard): CardLink => ({
 
 const byCost = (a: HsCard, b: HsCard) => a.cost - b.cost || a.name[0].localeCompare(b.name[0], 'pt')
 
-export async function getCardSlugs() {
-    const data = await getHsServerData()
-    return data.unique.map(cardSlug)
-}
-
 export type CardLookup = { status: 'found'; data: CardPageData } | { status: 'redirect'; slug: string } | { status: 'missing' }
 
 export async function getCardPage(slug: string): Promise<CardLookup> {

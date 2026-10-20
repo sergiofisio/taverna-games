@@ -1,7 +1,7 @@
 import type { Language } from "../i18n/translations";
 import { CRAFT_COST, DISENCHANT_VALUE, HS_RARITIES, craftCost, hsLabel, isFreeSet, maxCopies, setName, stripCardText, type HsCard, type HsSet } from "./hearthstone";
 
-const MECHANICS: Record<string, { pt: [string, string]; en: [string, string] }> = {
+export const MECHANICS: Record<string, { pt: [string, string]; en: [string, string] }> = {
     BATTLECRY: { pt: ['Grito de Guerra', 'Efeito que acontece quando a carta é jogada da mão.'], en: ['Battlecry', 'An effect that happens when the card is played from your hand.'] },
     DEATHRATTLE: { pt: ['Último Suspiro', 'Efeito que acontece quando o lacaio morre.'], en: ['Deathrattle', 'An effect that happens when the minion dies.'] },
     TAUNT: { pt: ['Provocar', 'Inimigos precisam atacar este lacaio antes de atingir outros alvos.'], en: ['Taunt', 'Enemies must attack this minion before hitting other targets.'] },
@@ -48,7 +48,7 @@ const MECHANICS: Record<string, { pt: [string, string]; en: [string, string] }> 
     STARSHIP_PIECE: { pt: ['Peça de Nave', 'Pode ser acoplada a uma Nave Estelar para lançá-la depois.'], en: ['Starship Piece', 'Can be added to a Starship that you launch later.'] },
 }
 
-const MECHANIC_TIPS: Record<string, Record<Language, string>> = {
+export const MECHANIC_TIPS: Record<string, Record<Language, string>> = {
     TAUNT: {
         pt: 'Provocar protege o herói e os lacaios mais frágeis, e é especialmente valioso contra decks agressivos, que precisam gastar ataques para passar.',
         en: 'Taunt shields your hero and frailer minions, and it is especially valuable against aggressive decks, which must spend attacks to get through.',

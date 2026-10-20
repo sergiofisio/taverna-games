@@ -382,6 +382,517 @@ export const GUIDES: Guide[] = [
             },
         },
     },
+    {
+        slug: 'atributos-base-pokemon',
+        world: 'pokemon',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Atributos base dos Pokémon: o que cada número significa',
+                description: 'Entenda PS, Ataque, Defesa, Ataque Especial, Defesa Especial e Velocidade, como ler o total de atributos e como IVs, EVs e naturezas mudam os valores finais.',
+                intro: 'Toda página de Pokémon mostra seis números chamados atributos base. Eles definem o potencial da espécie: dois Pikachu podem ter valores finais diferentes, mas ambos partem da mesma base. Saber ler esses números ajuda a escolher o papel de cada Pokémon na equipe.',
+                sections: [
+                    {
+                        title: 'Os seis atributos',
+                        paragraphs: [
+                            'PS (pontos de saúde) é quanto dano o Pokémon aguenta antes de desmaiar. Ataque aumenta o dano dos golpes físicos, como Terremoto ou Soco de Fogo, e Defesa reduz o dano físico recebido. Ataque Especial e Defesa Especial fazem o mesmo para golpes especiais, como Lança-chamas ou Raio de Gelo.',
+                            'Velocidade decide quem age primeiro no turno. Em batalhas equilibradas, agir antes pode significar derrubar o adversário antes que ele ataque, por isso a Velocidade costuma ser tão disputada quanto o dano.',
+                        ],
+                    },
+                    {
+                        title: 'Como ler o total',
+                        paragraphs: [
+                            'Somar os seis valores dá uma ideia do poder geral. Formas iniciais costumam ficar abaixo de 300, Pokémon totalmente evoluídos ficam entre 450 e 550, e lendários passam de 580. Arceus, por exemplo, tem 720.',
+                            'O total não conta a história inteira. Um Pokémon com 500 pontos bem distribuídos para o papel dele pode ser melhor do que outro com 530 espalhados em atributos que ele não usa. Um atacante físico com Ataque Especial alto está desperdiçando pontos.',
+                        ],
+                    },
+                    {
+                        title: 'Especialistas e extremos',
+                        paragraphs: [
+                            'Alguns Pokémon levam um atributo ao limite. Blissey tem 255 de PS, o máximo possível, e Shuckle tem 230 de Defesa e de Defesa Especial, mas é extremamente fraco no ataque. Esses extremos mostram que cada espécie foi pensada para uma função.',
+                            'Na prática, procure o maior valor do Pokémon e monte a estratégia em volta dele: Velocidade e Ataque altos pedem um atacante rápido; PS e defesas altas pedem um Pokémon que segura golpes e desgasta o adversário.',
+                        ],
+                    },
+                    {
+                        title: 'IVs, EVs e naturezas',
+                        paragraphs: [
+                            'O valor final de cada atributo também depende de três fatores individuais. Os IVs são valores de 0 a 31 sorteados para cada Pokémon e funcionam como a "genética" dele. Os EVs são pontos ganhos em batalha ou com itens: no total, cada Pokémon pode acumular 510, com no máximo 252 em um único atributo.',
+                            'A natureza aumenta um atributo em 10% e reduz outro em 10%, com exceção das naturezas neutras. Uma natureza Adamant (Firme), por exemplo, aumenta o Ataque e reduz o Ataque Especial, o que é perfeito para um atacante físico.',
+                        ],
+                    },
+                    {
+                        title: 'Use os atributos a seu favor',
+                        paragraphs: [
+                            'Na página de cada Pokémon da Taverna dos Jogos, as barras de atributos mostram onde ele se destaca, e o texto explica se ele tende a ser físico, especial, rápido ou resistente. Compare Pokémon do mesmo tipo antes de decidir quem leva na equipe.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'Pokémon base stats: what each number means',
+                description: 'Understand HP, Attack, Defense, Special Attack, Special Defense and Speed, how to read the stat total and how IVs, EVs and natures change the final values.',
+                intro: 'Every Pokémon page shows six numbers called base stats. They define the species’ potential: two Pikachu can have different final values, but both start from the same base. Reading these numbers helps you choose each Pokémon’s role on your team.',
+                sections: [
+                    {
+                        title: 'The six stats',
+                        paragraphs: [
+                            'HP is how much damage the Pokémon can take before fainting. Attack boosts the damage of physical moves like Earthquake or Fire Punch, and Defense reduces physical damage taken. Special Attack and Special Defense do the same for special moves like Flamethrower or Ice Beam.',
+                            'Speed decides who moves first each turn. In close battles, moving first can mean knocking out the opponent before it attacks, which is why Speed is as contested as damage.',
+                        ],
+                    },
+                    {
+                        title: 'Reading the total',
+                        paragraphs: [
+                            'Adding the six values gives a sense of overall power. First stages are usually below 300, fully evolved Pokémon sit between 450 and 550, and legendaries go above 580. Arceus, for example, has 720.',
+                            'The total isn’t the whole story. A Pokémon with 500 points spread well for its role can beat one with 530 points in stats it doesn’t use. A physical attacker with high Special Attack is wasting points.',
+                        ],
+                    },
+                    {
+                        title: 'Specialists and extremes',
+                        paragraphs: [
+                            'Some Pokémon push a single stat to the limit. Blissey has 255 HP, the maximum possible, and Shuckle has 230 Defense and Special Defense but is extremely weak on offense. These extremes show that each species was designed for a job.',
+                            'In practice, find the Pokémon’s highest stat and build around it: high Speed and Attack call for a fast attacker; high HP and defenses call for a Pokémon that tanks hits and wears the opponent down.',
+                        ],
+                    },
+                    {
+                        title: 'IVs, EVs and natures',
+                        paragraphs: [
+                            'Each stat’s final value also depends on three individual factors. IVs are values from 0 to 31 rolled for each Pokémon and act as its "genes". EVs are points earned in battle or with items: in total, a Pokémon can hold 510, with at most 252 in a single stat.',
+                            'A nature raises one stat by 10% and lowers another by 10%, except for neutral natures. Adamant, for example, raises Attack and lowers Special Attack, which is perfect for a physical attacker.',
+                        ],
+                    },
+                    {
+                        title: 'Make the stats work for you',
+                        paragraphs: [
+                            'On each Pokémon page at Taverna dos Jogos, the stat bars show where it shines, and the text explains whether it leans physical, special, fast or bulky. Compare Pokémon of the same type before deciding who joins your team.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'metodos-de-evolucao-pokemon',
+        world: 'pokemon',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Como os Pokémon evoluem: todos os métodos de evolução',
+                description: 'Nível, pedras, troca, amizade, horário, local, golpes e casos especiais: um guia com todos os jeitos de evoluir um Pokémon e exemplos de cada um.',
+                intro: 'A maioria dos Pokémon evolui só subindo de nível, mas muitos precisam de condições especiais. Conhecer os métodos evita ficar preso esperando uma evolução que nunca vai acontecer do jeito que você está tentando.',
+                sections: [
+                    {
+                        title: 'Por nível',
+                        paragraphs: [
+                            'É o método mais comum: ao atingir um nível específico, o Pokémon evolui no fim da batalha. Charmander evolui no nível 16 e Charmeleon no 36. Se quiser adiar a evolução, por exemplo para aprender um golpe mais cedo, basta apertar o botão de cancelar durante a animação.',
+                        ],
+                    },
+                    {
+                        title: 'Pedras e itens',
+                        paragraphs: [
+                            'Pedras evolutivas, como a Pedra do Fogo, da Água, do Trovão, da Folha e da Lua, fazem a evolução acontecer na hora, em qualquer nível. Pikachu vira Raichu com a Pedra do Trovão, e Eevee pode virar Flareon, Vaporeon ou Jolteon dependendo da pedra.',
+                            'Gerações mais novas adicionaram outras pedras, como a Pedra do Amanhecer, a do Crepúsculo, a Brilhante e a de Gelo. Alguns Pokémon também evoluem segurando um item ao subir de nível em certo horário, como Happiny com a Pedra Oval durante o dia.',
+                        ],
+                    },
+                    {
+                        title: 'Troca',
+                        paragraphs: [
+                            'Kadabra, Machoke, Graveler e Haunter evoluem quando são trocados com outro jogador. Outros precisam ser trocados segurando um item: Onix vira Steelix e Scyther vira Scizor com o Revestimento Metálico. Alguns jogos recentes oferecem alternativas para quem joga sozinho, então vale conferir a regra do jogo que você está jogando.',
+                        ],
+                    },
+                    {
+                        title: 'Amizade, horário e local',
+                        paragraphs: [
+                            'Pokémon como Pichu, Golbat e Eevee evoluem quando a amizade com o treinador está alta. Andar junto, vencer batalhas e usar itens de cuidado aumentam a amizade. No caso de Eevee, o horário importa: com amizade alta, ele vira Espeon de dia e Umbreon à noite.',
+                            'Alguns evoluem só em lugares específicos, como perto de uma rocha musgosa ou gelada (Leafeon e Glaceon nas gerações em que esse é o método) ou em áreas com campo magnético (Magneton e Nosepass). Nos jogos mais recentes, várias dessas regras foram trocadas por pedras.',
+                        ],
+                    },
+                    {
+                        title: 'Golpes, gênero e casos curiosos',
+                        paragraphs: [
+                            'Saber um golpe pode ser a condição: Piloswine vira Mamoswine ao subir de nível sabendo Poder Ancestral. O gênero também conta: só Kirlia macho vira Gallade com a Pedra do Amanhecer.',
+                            'Há métodos bem curiosos. Inkay evolui se o console estiver de cabeça para baixo na hora de subir de nível, e o Farfetch’d de Galar precisa acertar três golpes críticos na mesma batalha para virar Sirfetch’d. A página de cada Pokémon na Taverna mostra o método de cada etapa da linha evolutiva.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'How Pokémon evolve: every evolution method',
+                description: 'Level, stones, trade, friendship, time of day, location, moves and special cases: a guide to every way to evolve a Pokémon, with examples.',
+                intro: 'Most Pokémon evolve just by leveling up, but many need special conditions. Knowing the methods saves you from waiting for an evolution that will never happen the way you are trying.',
+                sections: [
+                    {
+                        title: 'By level',
+                        paragraphs: [
+                            'This is the most common method: on reaching a set level, the Pokémon evolves after the battle. Charmander evolves at level 16 and Charmeleon at 36. To delay evolution, for example to learn a move earlier, just press cancel during the animation.',
+                        ],
+                    },
+                    {
+                        title: 'Stones and items',
+                        paragraphs: [
+                            'Evolution stones such as the Fire, Water, Thunder, Leaf and Moon Stone trigger evolution instantly at any level. Pikachu becomes Raichu with a Thunder Stone, and Eevee can become Flareon, Vaporeon or Jolteon depending on the stone.',
+                            'Newer generations added more stones, like the Dawn, Dusk, Shiny and Ice Stone. Some Pokémon also evolve while holding an item when leveling up at a certain time, such as Happiny holding an Oval Stone during the day.',
+                        ],
+                    },
+                    {
+                        title: 'Trade',
+                        paragraphs: [
+                            'Kadabra, Machoke, Graveler and Haunter evolve when traded to another player. Others must be traded while holding an item: Onix becomes Steelix and Scyther becomes Scizor with a Metal Coat. Some recent games offer alternatives for solo players, so check the rules of the game you are playing.',
+                        ],
+                    },
+                    {
+                        title: 'Friendship, time and location',
+                        paragraphs: [
+                            'Pokémon like Pichu, Golbat and Eevee evolve when their friendship with the trainer is high. Walking together, winning battles and using care items raise friendship. For Eevee, time matters: with high friendship it becomes Espeon by day and Umbreon at night.',
+                            'Some only evolve in specific places, like near a Moss or Ice Rock (Leafeon and Glaceon in the generations that use that method) or in areas with a magnetic field (Magneton and Nosepass). In recent games, several of these rules were replaced by stones.',
+                        ],
+                    },
+                    {
+                        title: 'Moves, gender and odd cases',
+                        paragraphs: [
+                            'Knowing a move can be the condition: Piloswine becomes Mamoswine when leveling up while knowing Ancient Power. Gender counts too: only male Kirlia becomes Gallade with a Dawn Stone.',
+                            'There are some odd methods. Inkay evolves if the console is held upside down as it levels up, and Galarian Farfetch’d must land three critical hits in one battle to become Sirfetch’d. Each Pokémon page at the Tavern shows the method for every stage of its evolution line.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'regioes-e-geracoes-pokemon',
+        world: 'pokemon',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'As 9 gerações de Pokémon: regiões, jogos e novidades',
+                description: 'De Kanto a Paldea: quais jogos lançaram cada geração, quantos Pokémon cada uma trouxe e as mecânicas que mudaram a série.',
+                intro: 'A Pokédex Nacional tem 1025 Pokémon divididos em 9 gerações. Cada geração apresenta uma região nova, inspirada em um lugar real, e quase sempre traz uma mecânica que muda o jeito de jogar.',
+                sections: [
+                    {
+                        title: 'Kanto, Johto e Hoenn',
+                        paragraphs: [
+                            'A primeira geração, com Red e Green (1996), apresentou Kanto e os 151 Pokémon originais, do Bulbasaur ao Mew. A segunda, com Gold e Silver (1999), levou os jogadores a Johto, somou 100 Pokémon e trouxe os tipos Aço e Sombrio, os itens segurados, a criação de ovos e o ciclo de dia e noite.',
+                            'A terceira geração, com Ruby e Sapphire (2002), apresentou Hoenn e mais 135 Pokémon. Foi ela que criou as habilidades e as naturezas, duas mecânicas que até hoje definem como cada Pokémon funciona em batalha.',
+                        ],
+                    },
+                    {
+                        title: 'Sinnoh, Unova e Kalos',
+                        paragraphs: [
+                            'Em Diamond e Pearl (2006), a região de Sinnoh trouxe 107 Pokémon e uma mudança enorme: cada golpe passou a ser físico ou especial por conta própria, e não mais pelo tipo. Black e White (2010) apresentaram Unova com 156 Pokémon novos, o maior número de uma só geração.',
+                            'X e Y (2013) levaram a série para Kalos, em gráficos 3D, com 72 Pokémon, o tipo Fada e as Mega Evoluções, que transformam alguns Pokémon temporariamente durante a batalha.',
+                        ],
+                    },
+                    {
+                        title: 'Alola, Galar e Paldea',
+                        paragraphs: [
+                            'Sun e Moon (2016) apresentaram Alola, as formas regionais, como o Vulpix de gelo, e os golpes Z. Sword e Shield (2019) foram para Galar com o Dinamax, que deixa os Pokémon gigantes por três turnos.',
+                            'Scarlet e Violet (2022) apresentaram Paldea, o primeiro mundo totalmente aberto da série principal, e a Terastalização, que muda o tipo do Pokémon durante a batalha. Com as expansões, a Pokédex chegou a 1025.',
+                        ],
+                    },
+                    {
+                        title: 'Por que conhecer as gerações ajuda',
+                        paragraphs: [
+                            'Nos desafios da Taverna dos Jogos, saber de que geração um Pokémon é ajuda a diminuir as opções: o estilo da arte, o tipo de grito e até os nomes seguem padrões de cada época. A Pokédex do site permite filtrar por geração e ouvir os gritos de cada região.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'The 9 Pokémon generations: regions, games and new features',
+                description: 'From Kanto to Paldea: which games launched each generation, how many Pokémon each one added and the mechanics that changed the series.',
+                intro: 'The National Pokédex has 1025 Pokémon split into 9 generations. Each generation introduces a new region inspired by a real place, and almost always brings a mechanic that changes how the game is played.',
+                sections: [
+                    {
+                        title: 'Kanto, Johto and Hoenn',
+                        paragraphs: [
+                            'The first generation, with Red and Green (1996), introduced Kanto and the original 151 Pokémon, from Bulbasaur to Mew. The second, with Gold and Silver (1999), took players to Johto, added 100 Pokémon and brought the Steel and Dark types, held items, breeding and the day-night cycle.',
+                            'The third generation, with Ruby and Sapphire (2002), introduced Hoenn and 135 more Pokémon. It created abilities and natures, two mechanics that still define how each Pokémon works in battle.',
+                        ],
+                    },
+                    {
+                        title: 'Sinnoh, Unova and Kalos',
+                        paragraphs: [
+                            'In Diamond and Pearl (2006), the Sinnoh region brought 107 Pokémon and a huge change: each move became physical or special on its own instead of by type. Black and White (2010) introduced Unova with 156 new Pokémon, the most in a single generation.',
+                            'X and Y (2013) took the series to Kalos in 3D graphics, with 72 Pokémon, the Fairy type and Mega Evolution, which temporarily transforms some Pokémon during battle.',
+                        ],
+                    },
+                    {
+                        title: 'Alola, Galar and Paldea',
+                        paragraphs: [
+                            'Sun and Moon (2016) introduced Alola, regional forms such as Ice-type Vulpix, and Z-Moves. Sword and Shield (2019) went to Galar with Dynamax, which makes Pokémon giant for three turns.',
+                            'Scarlet and Violet (2022) introduced Paldea, the first fully open world in the main series, and Terastallization, which changes a Pokémon’s type mid-battle. With the expansions, the Pokédex reached 1025.',
+                        ],
+                    },
+                    {
+                        title: 'Why knowing the generations helps',
+                        paragraphs: [
+                            'In the Taverna dos Jogos challenges, knowing which generation a Pokémon is from narrows the options: the art style, the kind of cry and even the names follow each era’s patterns. The site’s Pokédex lets you filter by generation and hear the cries of each region.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'padrao-e-livre-hearthstone',
+        world: 'hearthstone',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Padrão ou Livre no Hearthstone: diferenças e rotação anual',
+                description: 'O que muda entre os formatos Padrão e Livre, como funciona a rotação anual das coleções e qual formato escolher para começar.',
+                intro: 'O Hearthstone tem dois formatos principais de partidas ranqueadas. Entender a diferença entre eles ajuda a decidir em que cartas investir e evita gastar pó em algo que vai sair do formato em poucos meses.',
+                sections: [
+                    {
+                        title: 'Formato Padrão',
+                        paragraphs: [
+                            'O Padrão usa só as coleções mais recentes, lançadas nos últimos dois anos, além da coleção Básica, que é gratuita para todos. Com menos cartas disponíveis, o meta muda a cada expansão e os decks ficam mais fáceis de entender.',
+                            'É o formato recomendado para quem está começando: há menos cartas para conhecer, as listas de decks são mais estáveis e as coleções novas que você abrir vão ser úteis por mais tempo.',
+                        ],
+                    },
+                    {
+                        title: 'Formato Livre',
+                        paragraphs: [
+                            'No Livre vale qualquer carta já lançada desde 2014. Isso permite combinações muito fortes e decks que não existem mais no Padrão, mas também exige conhecer muito mais cartas e jogar contra estratégias rápidas e explosivas.',
+                            'Cartas que saem do Padrão continuam valendo no Livre para sempre. Por isso, nada que você tem é perdido: só muda o formato em que pode ser usado.',
+                        ],
+                    },
+                    {
+                        title: 'Como funciona a rotação',
+                        paragraphs: [
+                            'Uma vez por ano, com a primeira expansão do novo ano, as coleções mais antigas do Padrão vão para o Livre. A coleção Básica também é renovada nessa época, com cartas que entram e saem.',
+                            'Se você joga Padrão, pense na rotação antes de criar cartas caras: uma lendária de uma coleção que vai rotacionar em poucos meses rende menos do que uma de uma coleção recente. A página de cada carta e de cada coleção na Taverna mostra se ela está no Padrão ou só no Livre.',
+                        ],
+                    },
+                    {
+                        title: 'Qual escolher',
+                        paragraphs: [
+                            'Comece pelo Padrão se a sua coleção é pequena ou recente. Se você joga há anos e tem muitas cartas antigas, o Livre pode ser mais barato, já que você já tem a base. O montador de decks do site permite escolher o formato e avisa se alguma carta não é válida nele.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'Standard or Wild in Hearthstone: differences and yearly rotation',
+                description: 'What changes between the Standard and Wild formats, how the yearly set rotation works and which format to pick when starting out.',
+                intro: 'Hearthstone has two main ranked formats. Understanding the difference helps you decide which cards to invest in and avoids spending dust on something that will leave the format in a few months.',
+                sections: [
+                    {
+                        title: 'Standard format',
+                        paragraphs: [
+                            'Standard uses only the most recent sets, released in the last two years, plus the Core set, which is free for everyone. With fewer cards available, the meta shifts with each expansion and decks are easier to understand.',
+                            'It is the recommended format for newcomers: there are fewer cards to learn, deck lists are more stable and the new sets you open stay useful for longer.',
+                        ],
+                    },
+                    {
+                        title: 'Wild format',
+                        paragraphs: [
+                            'In Wild, any card released since 2014 is allowed. That enables very strong combos and decks that no longer exist in Standard, but it also requires knowing many more cards and facing fast, explosive strategies.',
+                            'Cards that leave Standard stay legal in Wild forever. So nothing you own is lost: only the format where it can be used changes.',
+                        ],
+                    },
+                    {
+                        title: 'How rotation works',
+                        paragraphs: [
+                            'Once a year, with the first expansion of the new year, the oldest Standard sets move to Wild. The Core set is also refreshed at that time, with cards coming in and out.',
+                            'If you play Standard, think about rotation before crafting expensive cards: a legendary from a set rotating in a few months is worth less than one from a recent set. Each card and set page at the Tavern shows whether it is in Standard or Wild only.',
+                        ],
+                    },
+                    {
+                        title: 'Which to choose',
+                        paragraphs: [
+                            'Start with Standard if your collection is small or recent. If you have played for years and own many older cards, Wild can be cheaper since you already have the foundation. The site’s deck builder lets you pick the format and warns you if a card isn’t legal in it.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'classes-hearthstone',
+        world: 'hearthstone',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'As 11 classes do Hearthstone: estilo de jogo de cada uma',
+                description: 'Um resumo de cada classe do Hearthstone, do Cavaleiro da Morte ao Guerreiro: Poder Heroico, pontos fortes e o tipo de deck que cada uma costuma montar.',
+                intro: 'Cada classe do Hearthstone tem um Poder Heroico próprio e cartas exclusivas que definem o estilo de jogo. Conhecer as classes ajuda tanto a escolher a sua quanto a prever o que o adversário pode fazer.',
+                sections: [
+                    {
+                        title: 'Classes agressivas',
+                        paragraphs: [
+                            'O Caçador de Demônios joga rápido, com ataques baratos do próprio herói e cartas de Pária, que ficam mais fortes nas pontas da mão. O Caçador é a classe agressiva clássica: o Poder Heroico causa 2 de dano direto no herói inimigo, e as feras e segredos ajudam a pressionar.',
+                            'O Paladino costuma encher o tabuleiro com lacaios pequenos, usando Escudo Divino e bônus de atributos. O Poder Heroico invoca um Recruta da Mão de Prata 1/1, útil para negociar e somar com efeitos que contam lacaios.',
+                        ],
+                    },
+                    {
+                        title: 'Classes de feitiços e combos',
+                        paragraphs: [
+                            'O Mago é a classe dos feitiços: dano direto, congelamento e geração de cartas. O Poder Heroico causa 1 de dano em qualquer alvo. O Ladino usa Combo, armas e cartas baratas para fazer várias jogadas no mesmo turno, e o Poder Heroico equipa uma adaga.',
+                            'O Xamã mistura totens, elementais e Sobrecarga, que dá cartas fortes para o custo em troca de travar mana no turno seguinte. O Bruxo troca vida por cartas com o Poder Heroico, o que permite tanto decks agressivos quanto decks lentos cheios de demônios.',
+                        ],
+                    },
+                    {
+                        title: 'Classes de controle',
+                        paragraphs: [
+                            'O Guerreiro acumula Armadura com o Poder Heroico e usa armas e remoções para sobreviver até o fim da partida. O Sacerdote cura, copia cartas do adversário e controla o tabuleiro, com o Poder Heroico de cura.',
+                            'O Druida é a classe do crescimento de mana: ganha cristais extras para jogar cartas caras antes do tempo, e muitas das suas cartas oferecem Escolha Um. O Cavaleiro da Morte, a classe mais recente, monta o deck com runas de Sangue, Gelo e Profano, que definem quais cartas pode usar, e gasta Cadáveres gerados quando lacaios morrem.',
+                        ],
+                    },
+                    {
+                        title: 'Como escolher a sua classe',
+                        paragraphs: [
+                            'Se você gosta de partidas rápidas, comece com Caçador, Caçador de Demônios ou Paladino. Se prefere pensar a longo prazo, experimente Guerreiro, Sacerdote ou Druida. Na biblioteca de cartas da Taverna dá para filtrar por classe e ver o que cada uma tem de exclusivo antes de montar um deck.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'The 11 Hearthstone classes: how each one plays',
+                description: 'A summary of every Hearthstone class, from Death Knight to Warrior: Hero Power, strengths and the kind of deck each one tends to build.',
+                intro: 'Each Hearthstone class has its own Hero Power and exclusive cards that shape its play style. Knowing the classes helps you pick yours and predict what your opponent might do.',
+                sections: [
+                    {
+                        title: 'Aggressive classes',
+                        paragraphs: [
+                            'Demon Hunter plays fast, with cheap hero attacks and Outcast cards that get stronger at the edges of your hand. Hunter is the classic aggressive class: its Hero Power deals 2 damage straight to the enemy hero, and beasts and secrets keep the pressure on.',
+                            'Paladin usually fills the board with small minions, using Divine Shield and stat buffs. Its Hero Power summons a 1/1 Silver Hand Recruit, useful for trading and for effects that count minions.',
+                        ],
+                    },
+                    {
+                        title: 'Spell and combo classes',
+                        paragraphs: [
+                            'Mage is the spell class: direct damage, freezing and card generation. Its Hero Power deals 1 damage to any target. Rogue uses Combo, weapons and cheap cards to make several plays in one turn, and its Hero Power equips a dagger.',
+                            'Shaman mixes totems, elementals and Overload, which gives strong cards for their cost in exchange for locking mana next turn. Warlock trades health for cards with its Hero Power, enabling both aggressive decks and slow demon-filled decks.',
+                        ],
+                    },
+                    {
+                        title: 'Control classes',
+                        paragraphs: [
+                            'Warrior stacks Armor with its Hero Power and uses weapons and removal to survive into the late game. Priest heals, copies the opponent’s cards and controls the board, with a healing Hero Power.',
+                            'Druid is the mana-ramp class: it gains extra crystals to play expensive cards early, and many of its cards offer Choose One. Death Knight, the newest class, builds decks with Blood, Frost and Unholy runes that decide which cards it can use, and spends Corpses created when minions die.',
+                        ],
+                    },
+                    {
+                        title: 'Choosing your class',
+                        paragraphs: [
+                            'If you like fast games, start with Hunter, Demon Hunter or Paladin. If you prefer long-term planning, try Warrior, Priest or Druid. The Tavern’s card library lets you filter by class and see what each one has exclusively before building a deck.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'glossario-hearthstone',
+        world: 'hearthstone',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Glossário do Hearthstone: todas as palavras-chave explicadas',
+                description: 'O que significam Grito de Guerra, Último Suspiro, Provocar, Investida, Descobrir e as outras palavras-chave do Hearthstone, com dicas de uso.',
+                intro: 'As cartas do Hearthstone usam palavras-chave em negrito para resumir efeitos que se repetem. Este glossário explica cada uma delas em poucas palavras, para você entender qualquer carta de primeira.',
+                sections: [
+                    {
+                        title: 'Como as palavras-chave funcionam',
+                        paragraphs: [
+                            'Uma palavra-chave é um atalho: em vez de descrever o efeito inteiro, a carta mostra só o nome em negrito, e o jogo explica ao passar o mouse por cima. Algumas descrevem quando algo acontece (Grito de Guerra, Último Suspiro), outras descrevem uma característica permanente (Provocar, Furtividade).',
+                            'Os efeitos de Silenciar removem todas as palavras-chave e bônus de um lacaio. Por isso, cartas que dependem de Último Suspiro ou de auras são as mais prejudicadas por ele.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'Hearthstone glossary: every keyword explained',
+                description: 'What Battlecry, Deathrattle, Taunt, Rush, Discover and the other Hearthstone keywords mean, with tips on how to use them.',
+                intro: 'Hearthstone cards use bold keywords to sum up recurring effects. This glossary explains each one in a few words so you can understand any card at first sight.',
+                sections: [
+                    {
+                        title: 'How keywords work',
+                        paragraphs: [
+                            'A keyword is a shortcut: instead of describing the whole effect, the card shows the name in bold, and the game explains it when you hover over it. Some describe when something happens (Battlecry, Deathrattle), others describe a permanent trait (Taunt, Stealth).',
+                            'Silence effects remove every keyword and buff from a minion. That is why cards relying on Deathrattle or auras are hit hardest by it.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
+    {
+        slug: 'dicas-hearthdle',
+        world: 'hearthstone',
+        updated: '2026-10-20',
+        content: {
+            pt: {
+                title: 'Dicas para o Hearthdle: como acertar a carta com menos tentativas',
+                description: 'Estratégias para os desafios de Hearthstone da Taverna: como usar as pistas de classe, custo, atributos, raridade e coleção, e como reconhecer cartas pela arte e pelo texto.',
+                intro: 'No Hearthdle, cada palpite revela se a classe, o custo, o ataque, a vida, a raridade e a coleção da carta secreta batem com a sua. Com a estratégia certa, dá para chegar à resposta em poucas tentativas mesmo entre milhares de cartas.',
+                sections: [
+                    {
+                        title: 'Comece pelo meio',
+                        paragraphs: [
+                            'O primeiro palpite deve dividir as opções ao máximo. Um lacaio neutro de custo 3 ou 4, de uma coleção do meio da lista, informa muito: se a classe está errada, você descarta quase todas as neutras; se o custo está acima ou abaixo, sabe para que lado ir.',
+                            'Evite começar com cartas extremas, como um feitiço de 0 de mana ou uma lendária de 10. Elas só acertam em casos raros e informam pouco quando erram.',
+                        ],
+                    },
+                    {
+                        title: 'Use as setas de custo e atributos',
+                        paragraphs: [
+                            'As pistas de custo, ataque e vida dizem se o valor certo é maior ou menor. Trate isso como uma busca: se a carta tem custo maior que 4 e menor que 7, o próximo palpite deve ser de custo 5 ou 6. Ataque e vida funcionam igual e ajudam a separar lacaios do mesmo custo.',
+                            'Se você chutou um lacaio e o ataque aparece como errado sem nenhuma seta, a carta secreta não tem ataque: provavelmente é um feitiço ou um local. A coluna de tipo confirma essa suspeita no mesmo palpite.',
+                        ],
+                    },
+                    {
+                        title: 'Coleção e raridade fecham o cerco',
+                        paragraphs: [
+                            'Depois de acertar a classe e o custo, a coleção costuma ser a pista decisiva: a seta indica se a carta secreta é de uma coleção lançada antes ou depois da sua. Saber a ordem das expansões ajuda a escolher o próximo palpite. A página de coleções da Taverna lista todas em ordem, com as cartas de cada uma.',
+                        ],
+                    },
+                    {
+                        title: 'Arte e texto da carta',
+                        paragraphs: [
+                            'No modo Arte, a ilustração começa ampliada e desfocada. Preste atenção nas cores dominantes e no cenário: tons verdes e roxos lembram cartas de Bruxo e Caçador de Demônios, azul-gelo lembra Mago e Cavaleiro da Morte.',
+                            'No modo Texto, procure palavras-chave e números. Efeitos como Sobrecarga, Combo e Pária revelam a classe na hora, e o valor de dano ou de cura costuma indicar o custo aproximado da carta.',
+                        ],
+                    },
+                ],
+            },
+            en: {
+                title: 'Hearthdle tips: how to find the card in fewer guesses',
+                description: 'Strategies for the Tavern’s Hearthstone challenges: how to use the class, cost, stats, rarity and set clues, and how to recognize cards by art and text.',
+                intro: 'In Hearthdle, each guess reveals whether the secret card’s class, cost, attack, health, rarity and set match yours. With the right strategy, you can reach the answer in a few tries even among thousands of cards.',
+                sections: [
+                    {
+                        title: 'Start in the middle',
+                        paragraphs: [
+                            'Your first guess should split the options as much as possible. A neutral 3- or 4-cost minion from a mid-list set tells you a lot: if the class is wrong, you rule out almost every neutral card; if the cost is higher or lower, you know which way to go.',
+                            'Avoid opening with extreme cards like a 0-mana spell or a 10-mana legendary. They only hit in rare cases and reveal little when they miss.',
+                        ],
+                    },
+                    {
+                        title: 'Use the cost and stat arrows',
+                        paragraphs: [
+                            'The cost, attack and health clues tell you whether the right value is higher or lower. Treat it like a search: if the card costs more than 4 and less than 7, the next guess should cost 5 or 6. Attack and health work the same way and help separate minions of the same cost.',
+                            'If you guessed a minion and attack shows as wrong with no arrow, the secret card has no attack: it is probably a spell or a location. The type column confirms that on the same guess.',
+                        ],
+                    },
+                    {
+                        title: 'Set and rarity close the net',
+                        paragraphs: [
+                            'Once class and cost are right, the set is often the decisive clue: the arrow tells you whether the secret card comes from a set released before or after yours. Knowing the expansion order helps you pick the next guess. The Tavern’s sets page lists them all in order, with every card in each.',
+                        ],
+                    },
+                    {
+                        title: 'Card art and text',
+                        paragraphs: [
+                            'In Art mode, the illustration starts zoomed in and blurred. Watch the dominant colors and the setting: green and purple tones hint at Warlock and Demon Hunter, icy blue at Mage and Death Knight.',
+                            'In Text mode, look for keywords and numbers. Effects like Overload, Combo and Outcast reveal the class instantly, and the damage or healing amount usually hints at the card’s approximate cost.',
+                        ],
+                    },
+                ],
+            },
+        },
+    },
 ]
 
 export const getGuide = (slug: string) => GUIDES.find((guide) => guide.slug === slug)

@@ -11,6 +11,7 @@ const LINKS: { href: string; label: MessageKey }[] = [
   { href: '/hearthstone', label: 'navHearthstone' },
   { href: '/desafios', label: 'navChallenges' },
   { href: '/duelo', label: 'navDuel' },
+  { href: '/guias', label: 'guidesTitle' },
 ]
 
 const isActive = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`)
@@ -20,7 +21,7 @@ export default function MainNav() {
   const { t } = useLanguage()
 
   return (
-    <nav aria-label={t('mainNav')} className="flex max-w-[46vw] overflow-x-auto rounded-lg border border-white/40 p-0.5 [scrollbar-width:none]">
+    <nav aria-label={t('mainNav')} className="flex max-w-[46vw] overflow-x-auto rounded-lg border border-white/40 p-0.5 [scrollbar-none]">
       {LINKS.map(({ href, label }) => {
         const active = isActive(pathname, href)
         return (
