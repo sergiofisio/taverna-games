@@ -254,7 +254,7 @@ function UserDetail({ user, onClose }: { user: AdminUser; onClose: () => void })
                     {rows.map(([label, value]) => (
                         <div key={label} className="grid grid-cols-[9rem_1fr] gap-2">
                             <dt className="font-bold text-zinc-500 dark:text-zinc-400">{label}</dt>
-                            <dd className="wrap-break-words">{value}</dd>
+                            <dd className="wrap-break-word">{value}</dd>
                         </div>
                     ))}
                 </dl>

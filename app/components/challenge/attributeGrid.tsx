@@ -111,7 +111,7 @@ function AttributeRow({ id, target }: { id: number; target: ChallengeData }) {
                     initial={{ rotateY: 90, opacity: 0 }}
                     animate={{ rotateY: 0, opacity: 1 }}
                     transition={{ delay: (index + 1) * FLIP_DELAY, duration: 0.35 }}
-                    className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-xs font-bold leading-tight break-words shadow ${VERDICT_STYLES[verdict]}`}
+                    className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-xs font-bold leading-tight wrap-break-word shadow ${VERDICT_STYLES[verdict]}`}
                 >
                     {value}
                     {(verdict === 'higher' || verdict === 'lower') && (
