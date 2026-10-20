@@ -1,0 +1,22 @@
+import { getGuide, GUIDES } from "../../lib/guides";
+import { OG_SIZE, ogCard } from "../../lib/ogImage";
+
+export const alt = 'Guia da Taverna dos Jogos';
+export const size = OG_SIZE;
+export const contentType = 'image/png';
+
+export function generateStaticParams() {
+  return GUIDES.map(({ slug }) => ({ slug }));
+}
+
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  const guide = getGuide((await params).slug);
+  if (!guide) return ogCard({ title: 'Guias' });
+  const { title, description } = guide.content.pt;
+  return ogCard({
+    eyebrow: guide.world === 'pokemon' ? 'Guia · Pokémon' : 'Guia · Hearthstone',
+    title,
+    subtitle: description.length > 140 ? `${description.slice(0, 137)}…` : description,
+    accent: guide.world === 'pokemon' ? '#dc2626' : '#b45309',
+  });
+}

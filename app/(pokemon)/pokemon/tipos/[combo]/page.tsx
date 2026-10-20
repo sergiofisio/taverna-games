@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${data.types.length > 1 ? 'Tipos' : 'Tipo'} ${name}: fraquezas, resistências e Pokémon`,
     description: describeCombo(data.types, examples, data.pokemon.length, 'pt')[0].slice(0, 300),
     path: comboPath(data.types),
+    ownImage: true,
   });
   return data.pokemon.length ? metadata : { ...metadata, robots: { index: false, follow: true } };
 }

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getGuide(slug);
   if (!guide) return {};
   const { title, description } = guide.content.pt;
-  return pageMetadata({ title, description, path: `/guias/${guide.slug}` });
+  return pageMetadata({ title, description, path: `/guias/${guide.slug}`, ownImage: true });
 }
 
 export default async function GuidePage({ params }: Props) {

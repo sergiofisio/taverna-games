@@ -20,13 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { nome } = await params;
   const profile = await getPokemonProfile(nome);
   if (!profile) return {};
-  const metadata = pageMetadata({
+  return pageMetadata({
     title: `${profile.name} (#${profile.id}): tipos, fraquezas e evoluções`,
     description: pokemonMetaDescription(profile),
     path: `/pokemon/${profile.slug}`,
+    ownImage: true,
   });
-  const image = { url: getOfficialArtwork(profile.id), width: 475, height: 475, alt: profile.name };
-  return { ...metadata, openGraph: { ...metadata.openGraph, images: [image] }, twitter: { ...metadata.twitter, card: 'summary', images: [image.url] } };
 }
 
 export default async function PokemonDetailPage({ params }: Props) {

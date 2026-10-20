@@ -8,7 +8,7 @@ import { AuthProvider } from "./context/authContext";
 import MotionProvider from "./components/motionProvider";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 import { ADSENSE_CLIENT } from "./lib/ads";
-import { OG_IMAGE, SITE_KEYWORDS, websiteJsonLd } from "./lib/seo";
+import { SITE_KEYWORDS, websiteJsonLd } from "./lib/seo";
 import JsonLd from "./components/jsonLd";
 
 const geistSans = Geist({
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   keywords: SITE_KEYWORDS,
   category: 'games',
-  openGraph: { title: SITE_NAME, description: SITE_DESCRIPTION, siteName: SITE_NAME, locale: 'pt_BR', type: 'website', images: [OG_IMAGE] },
-  twitter: { card: 'summary_large_image', title: SITE_NAME, description: SITE_DESCRIPTION, images: [OG_IMAGE.url] },
+  openGraph: { title: SITE_NAME, description: SITE_DESCRIPTION, siteName: SITE_NAME, locale: 'pt_BR', type: 'website' },
+  twitter: { card: 'summary_large_image', title: SITE_NAME, description: SITE_DESCRIPTION },
   ...((GOOGLE_VERIFICATION || BING_VERIFICATION) && {
     verification: {
       ...(GOOGLE_VERIFICATION && { google: GOOGLE_VERIFICATION }),

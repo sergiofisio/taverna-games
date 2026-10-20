@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${data.a.name} vs ${data.b.name}: comparação de atributos e tipos`,
     description: describeComparison(data.a, data.b, 'pt').slice(0, 2).join(' ').slice(0, 300),
     path: comparePath(data.a.slug, data.b.slug),
+    ownImage: true,
   });
   return { ...metadata, robots: { index: false, follow: true } };
 }
