@@ -302,9 +302,12 @@ export function describeSet(set: HsSet, cards: SetCard[], language: Language) {
     ]
 }
 
-export function cardMetaDescription(card: HsCard, set: HsSet, text: string) {
-    const kind = hsLabel(card.type, 'pt').toLowerCase()
+export function cardMetaDescription(card: HsCard, set: HsSet, text: string, language: Language = 'pt') {
+    const kind = hsLabel(card.type, language).toLowerCase()
+    const rarity = hsLabel(card.rarity, language).toLowerCase()
     const plain = stripCardText(text).replace(/\s+/g, ' ').trim()
-    const base = `${card.name[0]} (${card.name[1]}): ${kind} ${hsLabel(card.rarity, 'pt').toLowerCase()} de ${card.cost} de mana da coleção ${set.name[0]}.`
+    const base = language === 'en'
+        ? `${card.name[1]}: a ${card.cost}-mana ${rarity} ${kind} from the ${set.name[1]} set.`
+        : `${card.name[0]} (${card.name[1]}): ${kind} ${rarity} de ${card.cost} de mana da coleção ${set.name[0]}.`
     return plain ? `${base} ${plain}`.slice(0, 300) : base
 }

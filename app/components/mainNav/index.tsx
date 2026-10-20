@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { useLanguage } from "../../context/languageContext";
 import type { MessageKey } from "../../i18n/translations";
+import { stripLocale } from "../../lib/localePath";
 
 const LINKS: { href: string; label: MessageKey }[] = [
   { href: '/pokemon', label: 'navPokemon' },
@@ -17,7 +18,7 @@ const LINKS: { href: string; label: MessageKey }[] = [
 const isActive = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`)
 
 export default function MainNav() {
-  const pathname = usePathname()
+  const pathname = stripLocale(usePathname())
   const { t } = useLanguage()
 
   return (

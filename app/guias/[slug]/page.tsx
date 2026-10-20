@@ -5,24 +5,18 @@ import JsonLd from "../../components/jsonLd";
 import AdScript from "../../components/ads/adScript";
 import TypeChartTable from "../../components/typeChartTable";
 import HsGlossary from "../../components/hsGlossary";
-import { GUIDES, getGuide } from "../../lib/guides";
+import { getGuide } from "../../lib/guides";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "../../lib/seo";
 import { SITE_NAME } from "../../lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return GUIDES.map(({ slug }) => ({ slug }));
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return {};
-  const { title, description } = guide.content.pt;
-  return pageMetadata({ title, description, path: `/guias/${guide.slug}`, ownImage: true });
+  const { pt, en } = guide.content;
+  return pageMetadata({ title: [pt.title, en.title], description: [pt.description, en.description], path: `/guias/${guide.slug}`, ownImage: true });
 }
 
 export default async function GuidePage({ params }: Props) {

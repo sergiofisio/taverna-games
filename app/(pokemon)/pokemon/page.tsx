@@ -6,11 +6,9 @@ import PokedexIndex from "../../components/pokedexIndex";
 import { getPokemonList } from "../../lib/pokemonServer";
 import AdScript from "../../components/ads/adScript";
 
-export const revalidate = 2592000;
-
-export const metadata: Metadata = pageMetadata({
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
   title: "Pokédex",
-  description: "Pokédex completa com os 1025 Pokémon das 9 gerações: tipos, estatísticas, evoluções, golpes, descrições e gritos, com os cenários de cada região.",
+  description: ["Pokédex completa com os 1025 Pokémon das 9 gerações: tipos, estatísticas, evoluções, golpes, descrições e gritos, com os cenários de cada região.", "Complete Pokédex with all 1025 Pokémon from 9 generations: types, stats, evolutions, moves, entries and cries, with each region’s scenery."],
   path: "/pokemon",
 });
 

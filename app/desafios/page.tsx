@@ -6,9 +6,9 @@ import JsonLd from "../components/jsonLd";
 import AdScript from "../components/ads/adScript";
 import { MESSAGES, type MessageKey } from "../i18n/translations";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Desafios diários de Pokémon e Hearthstone",
-  description: "Desafios diários no estilo Wordle: adivinhe o Pokémon pela silhueta, grito, descrição, zoom ou fusão, ou a carta de Hearthstone no Hearthdle.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Desafios diários de Pokémon e Hearthstone", "Daily Pokémon and Hearthstone challenges"],
+  description: ["Desafios diários no estilo Wordle: adivinhe o Pokémon pela silhueta, grito, descrição, zoom ou fusão, ou a carta de Hearthstone no Hearthdle.", "Wordle-style daily challenges: guess the Pokémon by silhouette, cry, description, zoom or fusion, or the Hearthstone card in Hearthdle."],
   path: "/desafios",
 });
 

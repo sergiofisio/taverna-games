@@ -111,8 +111,8 @@ export function describeMove(move: MoveProfile, language: Language) {
     return paragraphs
 }
 
-export function moveMetaDescription(move: MoveProfile) {
-    const [first, second] = describeMove(move, 'pt')
+export function moveMetaDescription(move: MoveProfile, language: Language = 'pt') {
+    const [first, second] = describeMove(move, language)
     return `${first} ${second}`.slice(0, 300)
 }
 

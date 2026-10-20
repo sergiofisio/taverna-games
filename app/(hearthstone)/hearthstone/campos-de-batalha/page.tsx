@@ -5,9 +5,9 @@ import BattlegroundsView from "../../../components/hearthstone/battlegrounds";
 import { getBattlegroundsData } from "../../../lib/hsServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Campos de Batalha: lacaios por tier, heróis e feitiços",
-  description: "Lista completa dos Campos de Batalha do Hearthstone: todos os lacaios por tier e tribo, os heróis com seus Poderes Heroicos e os feitiços da taverna.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Campos de Batalha: lacaios por tier, heróis e feitiços", "Battlegrounds: minions by tier, heroes and spells"],
+  description: ["Lista completa dos Campos de Batalha do Hearthstone: todos os lacaios por tier e tribo, os heróis com seus Poderes Heroicos e os feitiços da taverna.", "Complete Hearthstone Battlegrounds list: every minion by tier and tribe, heroes with their Hero Powers and tavern spells."],
   path: "/hearthstone/campos-de-batalha",
 });
 

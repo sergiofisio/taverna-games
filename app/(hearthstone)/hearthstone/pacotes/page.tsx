@@ -4,9 +4,9 @@ import JsonLd from "../../../components/jsonLd";
 import PackSimulator from "../../../components/hearthstone/packSimulator";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Simulador de pacotes de Hearthstone",
-  description: "Abra pacotes de qualquer coleção de Hearthstone de graça: veja as cartas, lendárias, douradas e quanto pó as repetidas renderiam, com as garantias do jogo.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Simulador de pacotes de Hearthstone", "Hearthstone pack simulator"],
+  description: ["Abra pacotes de qualquer coleção de Hearthstone de graça: veja as cartas, lendárias, douradas e quanto pó as repetidas renderiam, com as garantias do jogo.", "Open packs from any Hearthstone set for free: see the cards, legendaries, goldens and how much dust duplicates would give, with the game’s guarantees."],
   path: "/hearthstone/pacotes",
 });
 

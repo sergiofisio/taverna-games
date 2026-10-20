@@ -5,9 +5,9 @@ import TeamBuilder from "../../../components/teamBuilder";
 import { getTypedPokemon } from "../../../lib/pokemonServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Montador de time Pokémon",
-  description: "Monte um time de até 6 Pokémon e veja as fraquezas em comum, a cobertura de ataque e sugestões de tipos para completar o time.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Montador de time Pokémon", "Pokémon team builder"],
+  description: ["Monte um time de até 6 Pokémon e veja as fraquezas em comum, a cobertura de ataque e sugestões de tipos para completar o time.", "Build a team of up to 6 Pokémon and see shared weaknesses, offensive coverage and type suggestions to complete the team."],
   path: "/pokemon/time",
 });
 

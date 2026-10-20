@@ -8,12 +8,6 @@ import { pageMetadata } from "../../../../lib/seo";
 
 type Props = { params: Promise<{ par: string }> };
 
-export const revalidate = 2592000;
-
-export function generateStaticParams() {
-  return [];
-}
-
 async function load(pair: string) {
   const slugs = parseComparePair(pair);
   if (!slugs) return null;
@@ -24,9 +18,12 @@ async function load(pair: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await load((await params).par);
   if (!data) return {};
-  const metadata = pageMetadata({
-    title: `${data.a.name} vs ${data.b.name}: comparação de atributos e tipos`,
-    description: describeComparison(data.a, data.b, 'pt').slice(0, 2).join(' ').slice(0, 300),
+  const metadata = await pageMetadata({
+    title: [`${data.a.name} vs ${data.b.name}: comparação de atributos e tipos`, `${data.a.name} vs ${data.b.name}: stats and type comparison`],
+    description: [
+      describeComparison(data.a, data.b, 'pt').slice(0, 2).join(' ').slice(0, 300),
+      describeComparison(data.a, data.b, 'en').slice(0, 2).join(' ').slice(0, 300),
+    ],
     path: comparePath(data.a.slug, data.b.slug),
     ownImage: true,
   });

@@ -10,19 +10,13 @@ import { getOfficialArtwork } from "../../../lib/sprites";
 
 type Props = { params: Promise<{ nome: string }> };
 
-export const revalidate = 2592000;
-
-export function generateStaticParams() {
-  return [];
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { nome } = await params;
   const profile = await getPokemonProfile(nome);
   if (!profile) return {};
   return pageMetadata({
-    title: `${profile.name} (#${profile.id}): tipos, fraquezas e evoluções`,
-    description: pokemonMetaDescription(profile),
+    title: [`${profile.name} (#${profile.id}): tipos, fraquezas e evoluções`, `${profile.name} (#${profile.id}): types, weaknesses and evolutions`],
+    description: [pokemonMetaDescription(profile, 'pt'), pokemonMetaDescription(profile, 'en')],
     path: `/pokemon/${profile.slug}`,
     ownImage: true,
   });

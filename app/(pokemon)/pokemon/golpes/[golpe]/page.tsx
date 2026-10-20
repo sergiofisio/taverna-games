@@ -10,18 +10,12 @@ import { breadcrumbJsonLd, pageMetadata } from "../../../../lib/seo";
 
 type Props = { params: Promise<{ golpe: string }> };
 
-export const revalidate = 2592000;
-
-export function generateStaticParams() {
-  return [];
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const move = await getMove((await params).golpe);
   if (!move) return {};
   return pageMetadata({
-    title: `${prettify(move.slug)}: poder, precisão, efeito e Pokémon que aprendem`,
-    description: moveMetaDescription(move),
+    title: [`${prettify(move.slug)}: poder, precisão, efeito e Pokémon que aprendem`, `${prettify(move.slug)}: power, accuracy, effect and Pokémon that learn it`],
+    description: [moveMetaDescription(move, 'pt'), moveMetaDescription(move, 'en')],
     path: `/pokemon/golpes/${move.slug}`,
   });
 }

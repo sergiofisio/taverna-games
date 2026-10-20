@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useSyncExternalStore, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, type ReactNode } from "react";
 import {
     ITEM_NAMES_PT,
     MESSAGES,
@@ -10,21 +10,13 @@ import {
     type Language,
     type MessageKey,
 } from "../i18n/translations";
+import { localePath } from "../lib/localePath";
 
-const STORAGE_KEY = 'language'
-const listeners = new Set<() => void>()
-
-function subscribe(listener: () => void) {
-    listeners.add(listener)
-    window.addEventListener('storage', listener)
-    return () => {
-        listeners.delete(listener)
-        window.removeEventListener('storage', listener)
-    }
+const COOKIE = 'lang'
+const YEAR = 60 * 60 * 24 * 365
+const writeCookie = (language: Language) => {
+    document.cookie = `${COOKIE}=${language}; path=/; max-age=${YEAR}; samesite=lax`
 }
-
-const getSnapshot = (): Language => localStorage.getItem(STORAGE_KEY) === 'en' ? 'en' : 'pt'
-const getServerSnapshot = (): Language => 'pt'
 
 interface LanguageContextValue {
     language: Language;
@@ -37,16 +29,15 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-    const language = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
-
+export function LanguageProvider({ language, children }: { language: Language; children: ReactNode }) {
     useEffect(() => {
-        document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en'
+        if (language === 'en') writeCookie('en')
     }, [language])
 
     const setLanguage = useCallback((next: Language) => {
-        localStorage.setItem(STORAGE_KEY, next)
-        listeners.forEach((listener) => listener())
+        writeCookie(next)
+        const { origin, pathname, search, hash } = window.location
+        window.location.assign(new URL(`${localePath(pathname, next)}${search}${hash}`, origin).toString())
     }, [])
 
     const value = useMemo<LanguageContextValue>(() => ({

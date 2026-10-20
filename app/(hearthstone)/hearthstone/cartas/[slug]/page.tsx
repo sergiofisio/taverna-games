@@ -10,21 +10,14 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "../../../../lib/seo
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const revalidate = 604800;
-
-export function generateStaticParams() {
-  return [];
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const lookup = await getCardPage(slug);
   if (lookup.status !== 'found') return {};
   const { card, set, texts } = lookup.data;
-  const description = cardMetaDescription(card, set, texts.pt[0]);
-  const metadata = pageMetadata({
-    title: `${card.name[0]}: carta de Hearthstone`,
-    description,
+  const metadata = await pageMetadata({
+    title: [`${card.name[0]}: carta de Hearthstone`, `${card.name[1]}: Hearthstone card`],
+    description: [cardMetaDescription(card, set, texts.pt[0], 'pt'), cardMetaDescription(card, set, texts.en[0], 'en')],
     path: `/hearthstone/cartas/${lookup.data.slug}`,
   });
   const image = { url: cardRender(card, 'pt', 512), width: 512, height: 776, alt: card.name[0] };

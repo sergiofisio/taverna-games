@@ -10,18 +10,12 @@ import { breadcrumbJsonLd, pageMetadata } from "../../../../lib/seo";
 
 type Props = { params: Promise<{ habilidade: string }> };
 
-export const revalidate = 2592000;
-
-export function generateStaticParams() {
-  return [];
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ability = await getAbility((await params).habilidade);
   if (!ability) return {};
   return pageMetadata({
-    title: `Habilidade ${prettify(ability.slug)}: efeito e Pokémon que têm`,
-    description: describeAbility(ability, 'pt').join(' ').slice(0, 300),
+    title: [`Habilidade ${prettify(ability.slug)}: efeito e Pokémon que têm`, `${prettify(ability.slug)} ability: effect and Pokémon that have it`],
+    description: [describeAbility(ability, 'pt').join(' ').slice(0, 300), describeAbility(ability, 'en').join(' ').slice(0, 300)],
     path: `/pokemon/habilidades/${ability.slug}`,
   });
 }

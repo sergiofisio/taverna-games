@@ -5,6 +5,7 @@ import { GUIDES } from "./lib/guides";
 import { getSetSummaries } from "./lib/hsServer";
 import { getTypedPokemon } from "./lib/pokemonServer";
 import { allCombos, comboPath, hasSameTypes } from "./lib/typeCombos";
+import { localePath } from "./lib/localePath";
 import { absoluteUrl } from "./lib/seo";
 
 type Entry = [path: string, changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'], priority: number]
@@ -49,5 +50,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pokemon.map(({ slug }): Entry => [`/pokemon/${slug}`, 'monthly', 0.7]),
     ...sets.map(({ slug }): Entry => [`/hearthstone/colecoes/${slug}`, 'monthly', 0.6]),
   ]
-  return entries.map(([path, changeFrequency, priority]) => ({ url: absoluteUrl(path), lastModified, changeFrequency, priority }))
+  return entries.map(([path, changeFrequency, priority]) => ({
+    url: absoluteUrl(path),
+    lastModified,
+    changeFrequency,
+    priority,
+    alternates: { languages: { 'pt-BR': absoluteUrl(localePath(path, 'pt')), en: absoluteUrl(localePath(path, 'en')) } },
+  }))
 }

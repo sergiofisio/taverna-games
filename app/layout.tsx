@@ -10,6 +10,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 import { ADSENSE_CLIENT } from "./lib/ads";
 import { SITE_KEYWORDS, websiteJsonLd } from "./lib/seo";
 import JsonLd from "./components/jsonLd";
+import { getRequestLanguage } from "./lib/requestLanguage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,10 +50,11 @@ const themeScript = `
   if (theme === 'dark' || (!theme && prefersDark)) document.documentElement.classList.add('dark');
 `;
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const language = await getRequestLanguage();
   return (
     <html
-      lang="pt-BR"
+      lang={language === 'en' ? 'en' : 'pt-BR'}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -60,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <JsonLd data={websiteJsonLd} />
         <MotionProvider>
-          <LanguageProvider>
+          <LanguageProvider language={language}>
             <AuthProvider>
               <Header />
               <main className="flex flex-1 w-full">{children}</main>

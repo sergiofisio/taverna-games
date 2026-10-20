@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import type { Language } from "../i18n/translations";
+import { localePath } from "./localePath";
+import { getRequestLanguage } from "./requestLanguage";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./site";
 
 export const SITE_KEYWORDS = [
@@ -9,22 +12,39 @@ export const SITE_KEYWORDS = [
 
 const OG_IMAGE = { url: '/opengraph-image.png', width: 1200, height: 630, alt: SITE_NAME }
 
+type Localized = string | [pt: string, en: string]
+
 interface PageSeo {
-  title?: string;
-  description: string;
+  title?: Localized;
+  description: Localized;
   path: string;
   noIndex?: boolean;
   ownImage?: boolean;
 }
 
-export function pageMetadata({ title, description, path, noIndex, ownImage }: PageSeo): Metadata {
-  const ogTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME
+const pick = (value: Localized, language: Language) => (typeof value === 'string' ? value : value[language === 'en' ? 1 : 0])
+
+export const languageAlternates = (path: string) => ({
+  'pt-BR': localePath(path, 'pt'),
+  en: localePath(path, 'en'),
+  'x-default': localePath(path, 'pt'),
+})
+
+export async function pageMetadata({ title, description, path, noIndex, ownImage }: PageSeo): Promise<Metadata> {
+  const language = await getRequestLanguage()
+  const localizedTitle = title && pick(title, language)
+  const localizedDescription = pick(description, language)
+  const url = localePath(path, language)
+  const ogTitle = localizedTitle ? `${localizedTitle} · ${SITE_NAME}` : SITE_NAME
   return {
-    ...(title && { title }),
-    description,
-    alternates: { canonical: path },
-    openGraph: { title: ogTitle, description, url: path, siteName: SITE_NAME, locale: 'pt_BR', type: 'website', ...(!ownImage && { images: [OG_IMAGE] }) },
-    twitter: { card: 'summary_large_image', title: ogTitle, description },
+    ...(localizedTitle && { title: localizedTitle }),
+    description: localizedDescription,
+    alternates: { canonical: url, languages: languageAlternates(path) },
+    openGraph: {
+      title: ogTitle, description: localizedDescription, url, siteName: SITE_NAME, locale: language === 'en' ? 'en_US' : 'pt_BR', type: 'website',
+      ...(!ownImage && { images: [OG_IMAGE] }),
+    },
+    twitter: { card: 'summary_large_image', title: ogTitle, description: localizedDescription },
     ...(noIndex && { robots: { index: false, follow: true } }),
   }
 }

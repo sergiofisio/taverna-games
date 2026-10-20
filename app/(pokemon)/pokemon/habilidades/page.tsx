@@ -5,11 +5,9 @@ import { AbilityIndex } from "../../../components/moveViews";
 import { getAbilityList } from "../../../lib/movesServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const revalidate = 2592000;
-
-export const metadata: Metadata = pageMetadata({
-  title: "Habilidades Pokémon de A a Z",
-  description: "Todas as habilidades Pokémon com o efeito de cada uma e a lista de Pokémon que podem ter a habilidade, inclusive como habilidade oculta.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Habilidades Pokémon de A a Z", "Pokémon abilities from A to Z"],
+  description: ["Todas as habilidades Pokémon com o efeito de cada uma e a lista de Pokémon que podem ter a habilidade, inclusive como habilidade oculta.", "Every Pokémon ability with its effect and the list of Pokémon that can have it, including as a hidden ability."],
   path: "/pokemon/habilidades",
 });
 

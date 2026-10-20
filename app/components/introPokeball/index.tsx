@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { useLanguage } from "../../context/languageContext";
+import { stripLocale } from "../../lib/localePath";
 
 type Stage = 'closed' | 'opening' | 'done'
 
@@ -13,7 +14,7 @@ const FALLBACK_DONE_DELAY = 2000
 
 export default function IntroPokeball() {
   const { t } = useLanguage()
-  const pathname = usePathname()
+  const pathname = stripLocale(usePathname())
   const [stage, setStage] = useState<Stage>(() => pathname === '/pokemon' ? 'closed' : 'done')
   const isOpening = stage === 'opening'
 

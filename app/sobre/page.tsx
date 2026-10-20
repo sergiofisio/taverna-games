@@ -6,9 +6,9 @@ import { ABOUT } from "../lib/guides";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata } from "../lib/seo";
 import { SITE_NAME } from "../lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Sobre",
-  description: ABOUT.pt.description,
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Sobre", "About"],
+  description: [ABOUT.pt.description, ABOUT.en.description],
   path: "/sobre",
 });
 

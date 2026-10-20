@@ -3,9 +3,9 @@ import { pageMetadata } from "../../../lib/seo";
 import CollectionPage from "../../../components/hearthstone/collectionPage";
 import HsPageHeader from "../../../components/hearthstone/pageHeader";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Minha coleção de Hearthstone",
-  description: "Marque as cartas de Hearthstone que você tem para o deckbuilder calcular o pó que falta e sugerir cartas substitutas.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Minha coleção de Hearthstone", "My Hearthstone collection"],
+  description: ["Marque as cartas de Hearthstone que você tem para o deckbuilder calcular o pó que falta e sugerir cartas substitutas.", "Mark the Hearthstone cards you own so the deck builder can calculate missing dust and suggest replacements."],
   path: "/hearthstone/colecao",
 });
 

@@ -13,9 +13,9 @@ type TierSource = { updated: string | null; format: string; note: [string, strin
 
 const source = TIER_LIST as unknown as TierSource;
 
-export const metadata: Metadata = pageMetadata({
-  title: "Tier list de decks do Hearthstone",
-  description: "Os melhores decks de Hearthstone da semana separados por tier, com custo em pó e código para importar no jogo.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Tier list de decks do Hearthstone", "Hearthstone deck tier list"],
+  description: ["Os melhores decks de Hearthstone da semana separados por tier, com custo em pó e código para importar no jogo.", "This week’s best Hearthstone decks by tier, with dust cost and a code to import into the game."],
   path: "/hearthstone/tier-list",
 });
 

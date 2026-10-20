@@ -7,9 +7,9 @@ import JsonLd from "../../../components/jsonLd";
 import AdScript from "../../../components/ads/adScript";
 import { breadcrumbJsonLd } from "../../../lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Deckbuilder de Hearthstone",
-  description: "Monte decks de Hearthstone, importe e compartilhe deck codes e veja quanto pó arcano falta para os decks de referência com base na sua coleção.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Deckbuilder de Hearthstone", "Hearthstone deck builder"],
+  description: ["Monte decks de Hearthstone, importe e compartilhe deck codes e veja quanto pó arcano falta para os decks de referência com base na sua coleção.", "Build Hearthstone decks, import and share deck codes and see how much arcane dust you need for reference decks based on your collection."],
   path: "/hearthstone/decks",
 });
 

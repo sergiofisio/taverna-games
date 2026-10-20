@@ -5,17 +5,10 @@ import JsonLd from "../../../../components/jsonLd";
 import { TypeComboView } from "../../../../components/typeTools";
 import { getTypedPokemon } from "../../../../lib/pokemonServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../../lib/seo";
-import { allCombos, comboLabel, comboPath, comboSlug, describeCombo, hasSameTypes, parseCombo } from "../../../../lib/typeCombos";
+import { comboLabel, comboPath, comboSlug, describeCombo, hasSameTypes, parseCombo } from "../../../../lib/typeCombos";
 import { prettify } from "../../../../i18n/translations";
 
 type Props = { params: Promise<{ combo: string }> };
-
-export const revalidate = 2592000;
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return allCombos().map((types) => ({ combo: comboSlug(types) }));
-}
 
 async function load(slug: string) {
   const types = parseCombo(slug);
@@ -31,11 +24,16 @@ async function load(slug: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await load((await params).combo);
   if (!data) return {};
-  const name = comboLabel(data.types, 'pt');
   const examples = data.pokemon.slice(0, 4).map(({ slug }) => prettify(slug));
-  const metadata = pageMetadata({
-    title: `${data.types.length > 1 ? 'Tipos' : 'Tipo'} ${name}: fraquezas, resistências e Pokémon`,
-    description: describeCombo(data.types, examples, data.pokemon.length, 'pt')[0].slice(0, 300),
+  const metadata = await pageMetadata({
+    title: [
+      `${data.types.length > 1 ? 'Tipos' : 'Tipo'} ${comboLabel(data.types, 'pt')}: fraquezas, resistências e Pokémon`,
+      `${comboLabel(data.types, 'en')} type${data.types.length > 1 ? 's' : ''}: weaknesses, resistances and Pokémon`,
+    ],
+    description: [
+      describeCombo(data.types, examples, data.pokemon.length, 'pt')[0].slice(0, 300),
+      describeCombo(data.types, examples, data.pokemon.length, 'en')[0].slice(0, 300),
+    ],
     path: comboPath(data.types),
     ownImage: true,
   });

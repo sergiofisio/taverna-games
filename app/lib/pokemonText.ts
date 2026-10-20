@@ -257,9 +257,12 @@ export function describePokemon(profile: PokemonProfile, language: Language): Po
     }
 }
 
-export function pokemonMetaDescription(profile: PokemonProfile) {
-    const types = joinList(profile.types.map((type) => typeLabel(type, 'pt')), 'pt')
+export function pokemonMetaDescription(profile: PokemonProfile, language: Language = 'pt') {
+    const types = joinList(profile.types.map((type) => typeLabel(type, language)), language)
     const weak = getDefensiveMatchups(profile.types)
-    const weaknesses = [...weak.quadruple, ...weak.double].map((type) => typeLabel(type, 'pt'))
-    return `${profile.name} (nº ${profile.id}), Pokémon do tipo ${types} da ${profile.generation}ª geração: atributos base (total ${statTotal(profile)}), fraquezas${weaknesses.length ? ` (${joinList(weaknesses, 'pt')})` : ''}, evoluções, habilidades e dicas de batalha.`
+    const weaknesses = [...weak.quadruple, ...weak.double].map((type) => typeLabel(type, language))
+    const list = weaknesses.length ? ` (${joinList(weaknesses, language)})` : ''
+    return language === 'en'
+        ? `${profile.name} (#${profile.id}), a ${types}-type Pokémon from generation ${profile.generation}: base stats (total ${statTotal(profile)}), weaknesses${list}, evolutions, abilities and battle tips.`
+        : `${profile.name} (nº ${profile.id}), Pokémon do tipo ${types} da ${profile.generation}ª geração: atributos base (total ${statTotal(profile)}), fraquezas${list}, evoluções, habilidades e dicas de batalha.`
 }

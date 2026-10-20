@@ -5,11 +5,9 @@ import { MoveIndex } from "../../../components/moveViews";
 import { getMovesByType } from "../../../lib/movesServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const revalidate = 2592000;
-
-export const metadata: Metadata = pageMetadata({
-  title: "Golpes Pokémon por tipo",
-  description: "Lista de todos os golpes Pokémon separados por tipo, com poder, precisão, PP, efeitos e os Pokémon que aprendem cada um.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Golpes Pokémon por tipo", "Pokémon moves by type"],
+  description: ["Lista de todos os golpes Pokémon separados por tipo, com poder, precisão, PP, efeitos e os Pokémon que aprendem cada um.", "Every Pokémon move grouped by type, with power, accuracy, PP, effects and the Pokémon that learn each one."],
   path: "/pokemon/golpes",
 });
 

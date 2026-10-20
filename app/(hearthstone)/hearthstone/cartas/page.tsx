@@ -8,9 +8,9 @@ import JsonLd from "../../../components/jsonLd";
 import AdScript from "../../../components/ads/adScript";
 import { breadcrumbJsonLd } from "../../../lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Cartas de Hearthstone",
-  description: "Pesquise todas as cartas colecionáveis de Hearthstone por classe, custo, raridade, tipo, coleção e formato Padrão ou Livre, em português e inglês.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Cartas de Hearthstone", "Hearthstone cards"],
+  description: ["Pesquise todas as cartas colecionáveis de Hearthstone por classe, custo, raridade, tipo, coleção e formato Padrão ou Livre, em português e inglês.", "Search every collectible Hearthstone card by class, cost, rarity, type, set and Standard or Wild format, in Portuguese and English."],
   path: "/hearthstone/cartas",
 });
 

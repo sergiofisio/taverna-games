@@ -5,11 +5,9 @@ import { CompareHome } from "../../../components/pokemonCompare";
 import { getPokemonList } from "../../../lib/pokemonServer";
 import { breadcrumbJsonLd, pageMetadata } from "../../../lib/seo";
 
-export const revalidate = 2592000;
-
-export const metadata: Metadata = pageMetadata({
-  title: "Comparador de Pokémon",
-  description: "Compare dois Pokémon lado a lado: atributos base, tipos, velocidade e vantagem de tipo em batalha.",
+export const generateMetadata = (): Promise<Metadata> => pageMetadata({
+  title: ["Comparador de Pokémon", "Pokémon comparison"],
+  description: ["Compare dois Pokémon lado a lado: atributos base, tipos, velocidade e vantagem de tipo em batalha.", "Compare two Pokémon side by side: base stats, types, speed and type advantage in battle."],
   path: "/pokemon/comparar",
 });
 
