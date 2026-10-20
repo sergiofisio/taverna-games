@@ -189,10 +189,10 @@ export function ChampionView({ page }: { page: ChampionPage }) {
 
     return (
         <article className="flex w-full flex-col">
-            <header className="relative min-h-[22rem] w-full overflow-hidden">
+            <header className="relative min-h-88 w-full overflow-hidden">
                 <Image src={championSplash(champion)} alt={name} fill priority unoptimized sizes="100vw" className="object-cover object-top" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#010a13] via-[#010a13]/60 to-transparent" />
-                <div className="relative mx-auto flex h-full min-h-[22rem] max-w-6xl flex-col justify-end gap-2 px-4 pb-6">
+                <div className="relative mx-auto flex h-full min-h-88 max-w-6xl flex-col justify-end gap-2 px-4 pb-6">
                     <Breadcrumb items={[['League of Legends', '/lol'], [L.champions, '/lol/campeoes']]} />
                     <h1 className="text-5xl font-black tracking-tight text-[#f0e6d2]">{name}</h1>
                     <p className={`text-lg ${gold}`}>{capitalize(pickLang(champion.t, language))}</p>
@@ -253,7 +253,7 @@ export function ChampionView({ page }: { page: ChampionPage }) {
                     <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-7">
                         {full.skins.map((skin) => (
                             <li key={skin.num} className="flex flex-col gap-1 text-center text-xs">
-                                <Image src={championLoading(champion, skin.num)} alt={pickLang(skin.n, language)} width={154} height={280} unoptimized loading="lazy" className="aspect-[154/280] w-full rounded-xl border border-[#785a28] object-cover" />
+                                <Image src={championLoading(champion, skin.num)} alt={pickLang(skin.n, language)} width={154} height={280} unoptimized loading="lazy" className="aspect-154/280 w-full rounded-xl border border-[#785a28] object-cover" />
                                 <span className="font-bold">{skin.num === 0 ? name : pickLang(skin.n, language)}</span>
                             </li>
                         ))}

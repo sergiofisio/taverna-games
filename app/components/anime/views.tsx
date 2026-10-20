@@ -76,7 +76,7 @@ export function AnimeGrid({ anime, ranked = false }: { anime: AnimeSummary[]; ra
             {anime.map((entry, index) => (
                 <li key={entry.id}>
                     <Link href={animePath(entry)} prefetch={false} className="group flex flex-col gap-1.5">
-                        <span className="relative block aspect-[2/3] overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+                        <span className="relative block aspect-2/3 overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
                             <Image src={entry.img} alt={animeTitle(entry, language)} fill unoptimized loading="lazy" sizes="12rem" className="object-cover transition group-hover:scale-105" />
                             {ranked && <span className="absolute top-2 left-2 rounded-full bg-black/70 px-2 py-0.5 text-xs font-black">#{index + 1}</span>}
                             {entry.score && <span className="absolute right-2 bottom-2 rounded-full bg-pink-600 px-2 py-0.5 text-xs font-black">{entry.score}%</span>}
@@ -227,7 +227,7 @@ export function AnimeView({ anime }: { anime: AnimeFull }) {
                         <ul className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
                             {anime.characters.map((character) => (
                                 <li key={character.id} className="flex flex-col gap-1 text-center text-xs">
-                                    <span className="relative block aspect-[2/3] overflow-hidden rounded-xl">
+                                    <span className="relative block aspect-2/3 overflow-hidden rounded-xl">
                                         <Image src={character.img} alt={character.n} fill unoptimized loading="lazy" sizes="9rem" className="object-cover" />
                                     </span>
                                     <span className="font-bold">{character.n}</span>

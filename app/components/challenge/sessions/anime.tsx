@@ -199,7 +199,7 @@ function AnimeAttributeGrid({ guesses, target }: { guesses: AnimeSummary[]; targ
     return (
         <div className={`${CARD} p-3`}>
             <div className="overflow-x-auto pb-1 lg:overflow-visible">
-                <div role="table" className="flex min-w-[40rem] flex-col gap-1.5 lg:min-w-0">
+                <div role="table" className="flex min-w-160 flex-col gap-1.5 lg:min-w-0">
                     <div role="row" className={`${GRID} text-center text-[10px] leading-tight font-black uppercase text-zinc-500`}>
                         <span role="columnheader">{L.anime}</span>
                         {columns.map((column) => <span key={column} role="columnheader">{column}</span>)}
@@ -217,7 +217,7 @@ function AnimeAttributeGrid({ guesses, target }: { guesses: AnimeSummary[]; targ
                                     initial={{ rotateY: 90, opacity: 0 }}
                                     animate={{ rotateY: 0, opacity: 1 }}
                                     transition={{ delay: (index + 1) * 0.1, duration: 0.35 }}
-                                    className={`flex h-16 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-[11px] font-bold leading-tight break-words shadow ${VERDICT_STYLES[verdict]}`}
+                                    className={`flex h-16 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-[11px] font-bold leading-tight wrap-break-word shadow ${VERDICT_STYLES[verdict]}`}
                                 >
                                     <span className="line-clamp-3">{value}</span>
                                     {(verdict === 'higher' || verdict === 'lower') && (
@@ -282,7 +282,7 @@ function CoverClue({ anime, seed, revealed, wrongCount }: { anime: AnimeSummary;
     const origin = `${25 + seededFraction(`${seed}:x`) * 50}% ${20 + seededFraction(`${seed}:y`) * 50}%`
     return (
         <ClueFrame title={LABELS[language].whichCover}>
-            <div className="relative mx-auto aspect-[2/3] w-full max-w-xs overflow-hidden rounded-2xl border-4 border-pink-700 bg-zinc-900">
+            <div className="relative mx-auto aspect-2/3 w-full max-w-xs overflow-hidden rounded-2xl border-4 border-pink-700 bg-zinc-900">
                 <motion.div
                     initial={false}
                     animate={{ scale: revealed ? 1 : 1 + (MAX_ZOOM - 1) * progress, filter: `blur(${revealed ? 0 : MAX_BLUR * progress}px)` }}
@@ -309,7 +309,7 @@ function CharacterClue({ anime, seed, revealed, wrongCount }: { anime: AnimeSumm
             <ul className="flex justify-center gap-4">
                 {shown.map((character) => (
                     <li key={character.id} className="flex flex-col items-center gap-2">
-                        <motion.div initial={false} animate={{ filter: `blur(${blur}px)` }} className="relative aspect-[2/3] w-36 overflow-hidden rounded-2xl border-4 border-pink-700 bg-zinc-900 sm:w-44">
+                        <motion.div initial={false} animate={{ filter: `blur(${blur}px)` }} className="relative aspect-2/3 w-36 overflow-hidden rounded-2xl border-4 border-pink-700 bg-zinc-900 sm:w-44">
                             <Image src={character.img} alt="" fill unoptimized sizes="11rem" className="object-cover" />
                         </motion.div>
                         {(revealed || wrongCount >= 6) && <p className="text-sm font-black">{character.n}</p>}

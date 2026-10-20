@@ -147,15 +147,15 @@ function Simulator({ data }: { data: HsData }) {
                                         <button
                                             type="button"
                                             onClick={() => setFlipped((current) => current.map((value, position) => (position === index ? true : value)))}
-                                            className="w-full [perspective:1000px]"
+                                            className="w-full perspective-[1000px]"
                                             aria-label={flipped[index] ? cardName(entry.card, language) : `${L.click} (${index + 1})`}
                                         >
-                                            <motion.div animate={{ rotateY: flipped[index] ? 0 : 180 }} transition={{ duration: 0.5 }} className="relative [transform-style:preserve-3d]">
-                                                <div className="[backface-visibility:hidden]">
+                                            <motion.div animate={{ rotateY: flipped[index] ? 0 : 180 }} transition={{ duration: 0.5 }} className="relative transform-3d">
+                                                <div className="backface-hidden">
                                                     <HsCardImage card={entry.card} eager className={entry.golden ? 'drop-shadow-[0_0_18px_rgba(250,204,21,0.9)]' : 'drop-shadow-xl'} />
                                                 </div>
                                                 <div
-                                                    className="absolute inset-0 flex items-center justify-center rounded-2xl border-4 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                                                    className="absolute inset-0 flex items-center justify-center rounded-2xl border-4 backface-hidden transform-[rotateY(180deg)]"
                                                     style={{ borderColor: RARITY_COLORS[entry.card.rarity], background: 'radial-gradient(circle, #5b3a1c, #1c1008)', boxShadow: `0 0 24px ${RARITY_COLORS[entry.card.rarity]}` }}
                                                 >
                                                     <span className="text-5xl">🃏</span>

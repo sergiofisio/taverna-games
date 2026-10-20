@@ -28,7 +28,7 @@ export default function ChampionModal({ data, championKey, onClose }: { data: Lo
         >
             {champion && data && (
                 <div className="flex flex-col">
-                    <div className="relative aspect-[1215/717] w-full">
+                    <div className="relative aspect-1215/717 w-full">
                         <Image src={championSplash(champion)} alt={championName(champion, language)} fill sizes="768px" unoptimized className="object-cover" />
                         <div className="absolute inset-0 bg-linear-to-t from-[#091428] via-transparent" />
                         <button type="button" onClick={() => dialogRef.current?.close()} aria-label={t('close')} className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-full bg-black/60 text-xl font-black">×</button>

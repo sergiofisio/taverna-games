@@ -225,7 +225,7 @@ function ChampionAttributeGrid({ data, guesses, target }: { data: LolData; guess
     return (
         <div className={`${CARD} p-3`}>
             <div className="overflow-x-auto pb-1 lg:overflow-visible">
-                <div role="table" className="flex min-w-[40rem] flex-col gap-1.5 lg:min-w-0">
+                <div role="table" className="flex min-w-160 flex-col gap-1.5 lg:min-w-0">
                     <div role="row" className={`${GRID} text-center text-[10px] leading-tight font-black uppercase text-zinc-500`}>
                         <span role="columnheader">{L.champion}</span>
                         {columns.map((column) => <span key={column} role="columnheader">{column}</span>)}
@@ -245,7 +245,7 @@ function ChampionAttributeGrid({ data, guesses, target }: { data: LolData; guess
                                         initial={{ rotateY: 90, opacity: 0 }}
                                         animate={{ rotateY: 0, opacity: 1 }}
                                         transition={{ delay: (index + 1) * 0.1, duration: 0.35 }}
-                                        className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-[11px] font-bold leading-tight break-words shadow ${VERDICT_STYLES[verdict]}`}
+                                        className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-xl px-0.5 text-center text-[11px] font-bold leading-tight wrap-break-word shadow ${VERDICT_STYLES[verdict]}`}
                                     >
                                         <span className="line-clamp-3">{value}</span>
                                         {(verdict === 'higher' || verdict === 'lower') && (
@@ -318,7 +318,7 @@ function SplashClue({ champion, seed, revealed, wrongCount }: { champion: LolCha
     const origin = `${30 + seededFraction(`${seed}:x`) * 40}% ${25 + seededFraction(`${seed}:y`) * 40}%`
     return (
         <ClueFrame title={LABELS[language].whichSplash}>
-            <div className="relative mx-auto aspect-[1215/717] w-full max-w-2xl overflow-hidden rounded-2xl border-4 border-[#785a28] bg-zinc-900">
+            <div className="relative mx-auto aspect-1215/717 w-full max-w-2xl overflow-hidden rounded-2xl border-4 border-[#785a28] bg-zinc-900">
                 <motion.div initial={false} animate={{ scale, filter: `blur(${blur}px)` }} transition={{ type: 'spring', stiffness: 90, damping: 18 }} style={{ transformOrigin: origin }} className="absolute inset-0">
                     <Image src={championSplash(champion, skin)} alt="" fill unoptimized sizes="42rem" className="object-cover" />
                 </motion.div>
