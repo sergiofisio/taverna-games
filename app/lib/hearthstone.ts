@@ -203,6 +203,7 @@ const LABELS: Record<string, [string, string]> = {
     MECHANICAL: ['Mecanoide', 'Mech'],
     QUILBOAR: ['Javatusco', 'Quilboar'],
     NAGA: ['Naga', 'Naga'],
+    ABERRATION: ['Aberração', 'Aberration'],
     ALL: ['Todos', 'All'],
     FIRE: ['Fogo', 'Fire'],
     ARCANE: ['Arcano', 'Arcane'],

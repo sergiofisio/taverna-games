@@ -16,6 +16,7 @@ const PAGES: Entry[] = [
   ['/hearthstone/colecoes', 'monthly', 0.8],
   ['/hearthstone/decks', 'weekly', 0.8],
   ['/hearthstone/pacotes', 'monthly', 0.7],
+  ['/hearthstone/campos-de-batalha', 'weekly', 0.8],
   ['/hearthstone/colecao', 'monthly', 0.5],
   ['/desafios', 'daily', 0.9],
   ...CHALLENGE_MODES.map((mode): Entry => [`/desafios/${mode}`, 'daily', 0.8]),

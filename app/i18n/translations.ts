@@ -596,6 +596,8 @@ const pt = {
     hsPacksDesc: "Abra pacotes de qualquer coleção e veja lendárias, douradas e o pó das repetidas.",
     hsSets: "Coleções",
     hsSetsDesc: "Todas as expansões, com as cartas de cada uma e o custo para completar.",
+    hsBattlegrounds: "Campos de Batalha",
+    hsBattlegroundsDesc: "Lacaios por tier e tribo, heróis com Poder Heroico e feitiços da taverna.",
 }
 
 export type MessageKey = keyof typeof pt
@@ -1196,6 +1198,8 @@ const en: Record<MessageKey, string> = {
     hsPacksDesc: "Open packs from any set and see legendaries, goldens and duplicate dust.",
     hsSets: "Sets",
     hsSetsDesc: "Every expansion, with its cards and the cost to complete it.",
+    hsBattlegrounds: "Battlegrounds",
+    hsBattlegroundsDesc: "Minions by tier and tribe, heroes with Hero Powers and tavern spells.",
 }
 
 export const MESSAGES: Record<Language, Record<MessageKey, string>> = { pt, en }

@@ -2,11 +2,21 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import META_DECKS from "../data/hs-meta-decks.json";
 import type { Language } from "../i18n/translations";
+import type { BgData } from "./battlegrounds";
 import { canonicalId, cardSlug, parseHsData, setSlug, type HsCard, type HsData, type HsSet, type HsTexts, type RawHsData } from "./hearthstone";
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'data')
 
 let dataPromise: Promise<HsData> | null = null
+let bgPromise: Promise<BgData> | null = null
+
+export function getBattlegroundsData() {
+    bgPromise ??= readJson<BgData>('hs-bg.json').catch((error) => {
+        bgPromise = null
+        throw error
+    })
+    return bgPromise
+}
 const textPromises: Partial<Record<Language, Promise<HsTexts>>> = {}
 
 const readJson = async <T,>(file: string) => JSON.parse(await readFile(path.join(DATA_DIR, file), 'utf8')) as T
