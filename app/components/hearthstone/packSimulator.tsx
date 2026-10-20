@@ -67,6 +67,7 @@ export default function PackSimulator() {
             {!state && <p className="text-center text-amber-100/70">{L.loading}</p>}
             {state?.status === 'error' && <p role="alert" className="text-center font-bold text-red-300">{L.error}</p>}
             {state?.status === 'success' && <Simulator data={state.data} />}
+            <HowPacksWork />
         </>
     )
 }
@@ -209,12 +210,18 @@ function Simulator({ data }: { data: HsData }) {
                     )}
                 </section>
             )}
-
-            <section className={panel}>
-                <h2 className="text-xl font-black text-amber-200">{L.howTo}</h2>
-                {L.howToText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                <Link href="/guias/po-arcano-e-deck-barato" className="self-start font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">{L.dustGuide} →</Link>
-            </section>
         </div>
+    )
+}
+
+function HowPacksWork() {
+    const { language } = useLanguage()
+    const L = LABELS[language]
+    return (
+        <section className={panel}>
+            <h2 className="text-xl font-black text-amber-200">{L.howTo}</h2>
+            {L.howToText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            <Link href="/guias/po-arcano-e-deck-barato" className="self-start font-bold text-amber-300 underline underline-offset-2 hover:text-amber-100">{L.dustGuide} →</Link>
+        </section>
     )
 }
