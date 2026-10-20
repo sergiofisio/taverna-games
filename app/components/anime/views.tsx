@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { useLanguage } from "../../context/languageContext";
 import { useTranslatedText } from "../../hooks/useTranslatedText";
 import type { Language } from "../../i18n/translations";
-import { ANIME_GENRES, animePath, animeTitle, formatLabel, genreLabel, genreSlug, seasonLabel, sourceLabel, statusLabel, type AnimeSummary } from "../../lib/anime";
+import { ANIME_GENRES, animePath, isPoolAnime, animeTitle, formatLabel, genreLabel, genreSlug, seasonLabel, sourceLabel, statusLabel, type AnimeSummary } from "../../lib/anime";
 import type { AnimeFull } from "../../lib/animeServer";
 import { describeAnime } from "../../lib/animeText";
 
@@ -75,7 +75,7 @@ export function AnimeGrid({ anime, ranked = false }: { anime: AnimeSummary[]; ra
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {anime.map((entry, index) => (
                 <li key={entry.id}>
-                    <Link href={animePath(entry)} prefetch={false} className="group flex flex-col gap-1.5">
+                    <Link href={animePath(entry)} prefetch={false} rel={isPoolAnime(entry.id) ? undefined : 'nofollow'} className="group flex flex-col gap-1.5">
                         <span className="relative block aspect-2/3 overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
                             <Image src={entry.img} alt={animeTitle(entry, language)} fill unoptimized loading="lazy" sizes="12rem" className="object-cover transition group-hover:scale-105" />
                             {ranked && <span className="absolute top-2 left-2 rounded-full bg-black/70 px-2 py-0.5 text-xs font-black">#{index + 1}</span>}
@@ -243,7 +243,7 @@ export function AnimeView({ anime }: { anime: AnimeFull }) {
                         <ul className="flex flex-wrap gap-3">
                             {anime.relations.slice(0, 8).map((relation) => (
                                 <li key={relation.id}>
-                                    <Link href={animePath({ id: relation.id, romaji: relation.romaji })} prefetch={false} className="flex items-center gap-2 rounded-xl bg-black/30 p-2 pr-3 text-sm font-bold hover:bg-black/50">
+                                    <Link href={animePath({ id: relation.id, romaji: relation.romaji })} prefetch={false} rel={isPoolAnime(relation.id) ? undefined : 'nofollow'} className="flex items-center gap-2 rounded-xl bg-black/30 p-2 pr-3 text-sm font-bold hover:bg-black/50">
                                         <Image src={relation.img} alt="" width={36} height={52} unoptimized className="h-13 w-9 rounded object-cover" />
                                         <span className="max-w-48">{relation.romaji}</span>
                                     </Link>

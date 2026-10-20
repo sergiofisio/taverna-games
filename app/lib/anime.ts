@@ -3,6 +3,8 @@ import type { Language } from "../i18n/translations";
 
 export { ANIME_POOL }
 export const ANIME_POOL_SIZE = ANIME_POOL.length
+const POOL_IDS = new Set(ANIME_POOL)
+export const isPoolAnime = (id: number) => POOL_IDS.has(id)
 
 export interface AnimeCharacter {
     id: number
